@@ -197,9 +197,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DeptsController.cs" />
+    <Compile Include="Controllers\DesignationsController.cs" />
     <Compile Include="Controllers\DivisionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SubUnitsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,12 +217,27 @@
     <Compile Include="Migrations\201802060834032_add-foreign.Designer.cs">
       <DependentUpon>201802060834032_add-foreign.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802061020063_add-designation.cs" />
+    <Compile Include="Migrations\201802061020063_add-designation.Designer.cs">
+      <DependentUpon>201802061020063_add-designation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802061028303_add-subunit.cs" />
+    <Compile Include="Migrations\201802061028303_add-subunit.Designer.cs">
+      <DependentUpon>201802061028303_add-subunit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802061054014_add-employee.cs" />
+    <Compile Include="Migrations\201802061054014_add-employee.Designer.cs">
+      <DependentUpon>201802061054014_add-employee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dept.cs" />
+    <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\Division.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SubUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -298,6 +315,16 @@
     <Content Include="Views\Depts\Details.cshtml" />
     <Content Include="Views\Depts\Edit.cshtml" />
     <Content Include="Views\Depts\Index.cshtml" />
+    <Content Include="Views\Designations\Create.cshtml" />
+    <Content Include="Views\Designations\Delete.cshtml" />
+    <Content Include="Views\Designations\Details.cshtml" />
+    <Content Include="Views\Designations\Edit.cshtml" />
+    <Content Include="Views\Designations\Index.cshtml" />
+    <Content Include="Views\SubUnits\Create.cshtml" />
+    <Content Include="Views\SubUnits\Delete.cshtml" />
+    <Content Include="Views\SubUnits\Details.cshtml" />
+    <Content Include="Views\SubUnits\Edit.cshtml" />
+    <Content Include="Views\SubUnits\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802040924512_firstmig.resx">
@@ -308,6 +335,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802060834032_add-foreign.resx">
       <DependentUpon>201802060834032_add-foreign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802061020063_add-designation.resx">
+      <DependentUpon>201802061020063_add-designation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802061028303_add-subunit.resx">
+      <DependentUpon>201802061028303_add-subunit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802061054014_add-employee.resx">
+      <DependentUpon>201802061054014_add-employee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
