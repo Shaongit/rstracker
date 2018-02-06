@@ -10,112 +10,107 @@ using RSTracker.Models;
 
 namespace RSTracker.Controllers
 {
-    public class DeptsController : Controller
+    public class DivisionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Depts
+        // GET: Divisions
         public ActionResult Index()
         {
-            var dept = db.Dept.Include(d => d.Division);
-            return View(dept.ToList());
+            return View(db.Division.ToList());
         }
 
-        // GET: Depts/Details/5
+        // GET: Divisions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dept dept = db.Dept.Find(id);
-            if (dept == null)
+            Division division = db.Division.Find(id);
+            if (division == null)
             {
                 return HttpNotFound();
             }
-            return View(dept);
+            return View(division);
         }
 
-        // GET: Depts/Create
+        // GET: Divisions/Create
         public ActionResult Create()
         {
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
             return View();
         }
 
-        // POST: Depts/Create
+        // POST: Divisions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,DivisionId")] Dept dept)
+        public ActionResult Create([Bind(Include = "Id,Name")] Division division)
         {
             if (ModelState.IsValid)
             {
-                db.Dept.Add(dept);
+                db.Division.Add(division);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
-            return View(dept);
+            return View(division);
         }
 
-        // GET: Depts/Edit/5
+        // GET: Divisions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dept dept = db.Dept.Find(id);
-            if (dept == null)
+            Division division = db.Division.Find(id);
+            if (division == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
-            return View(dept);
+            return View(division);
         }
 
-        // POST: Depts/Edit/5
+        // POST: Divisions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,DivisionId")] Dept dept)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Division division)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dept).State = EntityState.Modified;
+                db.Entry(division).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
-            return View(dept);
+            return View(division);
         }
 
-        // GET: Depts/Delete/5
+        // GET: Divisions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dept dept = db.Dept.Find(id);
-            if (dept == null)
+            Division division = db.Division.Find(id);
+            if (division == null)
             {
                 return HttpNotFound();
             }
-            return View(dept);
+            return View(division);
         }
 
-        // POST: Depts/Delete/5
+        // POST: Divisions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Dept dept = db.Dept.Find(id);
-            db.Dept.Remove(dept);
+            Division division = db.Division.Find(id);
+            db.Division.Remove(division);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

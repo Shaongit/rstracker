@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DeptsController.cs" />
+    <Compile Include="Controllers\DivisionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,6 +206,14 @@
     <Compile Include="Migrations\201802040924512_firstmig.cs" />
     <Compile Include="Migrations\201802040924512_firstmig.Designer.cs">
       <DependentUpon>201802040924512_firstmig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802060826307_add-division.cs" />
+    <Compile Include="Migrations\201802060826307_add-division.Designer.cs">
+      <DependentUpon>201802060826307_add-division.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802060834032_add-foreign.cs" />
+    <Compile Include="Migrations\201802060834032_add-foreign.Designer.cs">
+      <DependentUpon>201802060834032_add-foreign.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -279,6 +288,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Divisions\Create.cshtml" />
+    <Content Include="Views\Divisions\Delete.cshtml" />
+    <Content Include="Views\Divisions\Details.cshtml" />
+    <Content Include="Views\Divisions\Edit.cshtml" />
+    <Content Include="Views\Divisions\Index.cshtml" />
     <Content Include="Views\Depts\Create.cshtml" />
     <Content Include="Views\Depts\Delete.cshtml" />
     <Content Include="Views\Depts\Details.cshtml" />
@@ -288,6 +302,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802040924512_firstmig.resx">
       <DependentUpon>201802040924512_firstmig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802060826307_add-division.resx">
+      <DependentUpon>201802060826307_add-division.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802060834032_add-foreign.resx">
+      <DependentUpon>201802060834032_add-foreign.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -13,5 +13,9 @@ namespace RSTracker.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+        public int DivisionId { get; set; }
+
+        [ForeignKey("DivisionId")]
+        public virtual Division Division { get; set; }
     }
 }
