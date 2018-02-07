@@ -15,5 +15,6 @@ namespace RSTracker.Models
         public int DeptId { get; set; }
         [ForeignKey("DeptId")]
         public virtual Dept Dept { get; set; }
+        public virtual List<Employee> Employees { get; set; }
     }
 }

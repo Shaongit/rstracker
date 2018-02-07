@@ -17,5 +17,6 @@ namespace RSTracker.Models
 
         [ForeignKey("DivisionId")]
         public virtual Division Division { get; set; }
+        public virtual List<Employee> Employees { get; set; }
     }
 }

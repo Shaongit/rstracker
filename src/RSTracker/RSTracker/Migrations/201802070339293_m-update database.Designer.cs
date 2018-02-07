@@ -7,13 +7,13 @@ namespace RSTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addemployee : IMigrationMetadata
+    public sealed partial class mupdatedatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addemployee));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(mupdatedatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802061054014_add-employee"; }
+            get { return "201802070339293_m-update database"; }
         }
         
         string IMigrationMetadata.Source

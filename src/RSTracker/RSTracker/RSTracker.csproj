@@ -199,6 +199,7 @@
     <Compile Include="Controllers\DeptsController.cs" />
     <Compile Include="Controllers\DesignationsController.cs" />
     <Compile Include="Controllers\DivisionsController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SubUnitsController.cs" />
@@ -225,9 +226,17 @@
     <Compile Include="Migrations\201802061028303_add-subunit.Designer.cs">
       <DependentUpon>201802061028303_add-subunit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802061054014_add-employee.cs" />
-    <Compile Include="Migrations\201802061054014_add-employee.Designer.cs">
-      <DependentUpon>201802061054014_add-employee.cs</DependentUpon>
+    <Compile Include="Migrations\201802070315243_createEmployee.cs" />
+    <Compile Include="Migrations\201802070315243_createEmployee.Designer.cs">
+      <DependentUpon>201802070315243_createEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070339293_m-update database.cs" />
+    <Compile Include="Migrations\201802070339293_m-update database.Designer.cs">
+      <DependentUpon>201802070339293_m-update database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070409144_m-foreign key update.cs" />
+    <Compile Include="Migrations\201802070409144_m-foreign key update.Designer.cs">
+      <DependentUpon>201802070409144_m-foreign key update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -325,6 +334,11 @@
     <Content Include="Views\SubUnits\Details.cshtml" />
     <Content Include="Views\SubUnits\Edit.cshtml" />
     <Content Include="Views\SubUnits\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802040924512_firstmig.resx">
@@ -342,8 +356,14 @@
     <EmbeddedResource Include="Migrations\201802061028303_add-subunit.resx">
       <DependentUpon>201802061028303_add-subunit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802061054014_add-employee.resx">
-      <DependentUpon>201802061054014_add-employee.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802070315243_createEmployee.resx">
+      <DependentUpon>201802070315243_createEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070339293_m-update database.resx">
+      <DependentUpon>201802070339293_m-update database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070409144_m-foreign key update.resx">
+      <DependentUpon>201802070409144_m-foreign key update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
