@@ -196,12 +196,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CircularsController.cs" />
     <Compile Include="Controllers\DeptsController.cs" />
     <Compile Include="Controllers\DesignationsController.cs" />
     <Compile Include="Controllers\DivisionsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RequisitionsController.cs" />
     <Compile Include="Controllers\SubUnitsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,14 +240,24 @@
     <Compile Include="Migrations\201802070409144_m-foreign key update.Designer.cs">
       <DependentUpon>201802070409144_m-foreign key update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802111002071_add-requisition.cs" />
+    <Compile Include="Migrations\201802111002071_add-requisition.Designer.cs">
+      <DependentUpon>201802111002071_add-requisition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802111033019_add-circular.cs" />
+    <Compile Include="Migrations\201802111033019_add-circular.Designer.cs">
+      <DependentUpon>201802111033019_add-circular.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Circular.cs" />
     <Compile Include="Models\Dept.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Requisition.cs" />
     <Compile Include="Models\SubUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -339,6 +351,16 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Requisitions\Create.cshtml" />
+    <Content Include="Views\Requisitions\Delete.cshtml" />
+    <Content Include="Views\Requisitions\Details.cshtml" />
+    <Content Include="Views\Requisitions\Edit.cshtml" />
+    <Content Include="Views\Requisitions\Index.cshtml" />
+    <Content Include="Views\Circulars\Create.cshtml" />
+    <Content Include="Views\Circulars\Delete.cshtml" />
+    <Content Include="Views\Circulars\Details.cshtml" />
+    <Content Include="Views\Circulars\Edit.cshtml" />
+    <Content Include="Views\Circulars\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802040924512_firstmig.resx">
@@ -364,6 +386,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802070409144_m-foreign key update.resx">
       <DependentUpon>201802070409144_m-foreign key update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111002071_add-requisition.resx">
+      <DependentUpon>201802111002071_add-requisition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111033019_add-circular.resx">
+      <DependentUpon>201802111033019_add-circular.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

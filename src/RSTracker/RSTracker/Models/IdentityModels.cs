@@ -35,5 +35,7 @@ namespace RSTracker.Models
         public DbSet<Designation> Designation { get; set; }
         public DbSet<SubUnit> SubUnit { get; set; }
         public DbSet<Employee> Employee { get; set; }
+        public DbSet<Requisition> Requisitions { get; set; }
+        public DbSet<Circular> Circular { get; set; }
     }
 }

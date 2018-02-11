@@ -1,0 +1,105 @@
+﻿@model IEnumerable<RSTracker.Models.Circular>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Requisition.RefNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CircularDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfCvFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfCvFromAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfCvFromOnline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfCvFromHardcopy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfCvFromRef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortLinedCvSendtoLm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinalSelectedCandidate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WrittentestDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WrittenTestPassedCandidate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VivaDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VivaCandidate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Requisition.RefNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CircularDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfCvFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfCvFromAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfCvFromOnline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfCvFromHardcopy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfCvFromRef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortLinedCvSendtoLm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinalSelectedCandidate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WrittentestDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WrittenTestPassedCandidate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VivaDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VivaCandidate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
