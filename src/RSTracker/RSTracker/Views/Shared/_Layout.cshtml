@@ -22,15 +22,24 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Dept", "Index", "Depts")</li>
-                    <li>@Html.ActionLink("Division", "Index", "Divisions")</li>
-                    <li>@Html.ActionLink("Designation", "Index", "Designations")</li>
-                    <li>@Html.ActionLink("SubUnit", "Index", "SubUnits")</li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Division", "Index", "Divisions")</li>
+                            <li>@Html.ActionLink("Dept", "Index", "Depts")</li>
+                            <li>@Html.ActionLink("SubUnit", "Index", "SubUnits")</li>
+                            <li>@Html.ActionLink("Designation", "Index", "Designations")</li>
+                        </ul>
+                    </li>
+                 
                     <li>@Html.ActionLink("Employee", "Index", "Employees")</li>
                     <li>@Html.ActionLink("Requisition", "Index", "Requisitions")</li>
                     <li>@Html.ActionLink("Circular", "Index", "Circulars")</li>
+
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

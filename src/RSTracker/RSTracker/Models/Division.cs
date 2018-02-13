@@ -11,6 +11,7 @@ namespace RSTracker.Models
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set;  }
+        [Display(Name ="Division")]
         public string Name { get; set; }
 
         public virtual List<Employee> Employees { get; set; }
