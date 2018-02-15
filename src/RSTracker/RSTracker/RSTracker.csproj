@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -273,6 +275,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\RSTrackerDB.mdf" />
+    <Content Include="App_Data\RSTrackerDB_log.ldf">
+      <DependentUpon>RSTrackerDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -281,26 +291,106 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Properties\PublishProfiles\RSTracker - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\RSTracker - Web Deploy.pubxml" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Theme\sb-admin\blank.html" />
+    <Content Include="Theme\sb-admin\cards.html" />
+    <Content Include="Theme\sb-admin\charts.html" />
+    <Content Include="Theme\sb-admin\css\sb-admin.css" />
+    <Content Include="Theme\sb-admin\css\sb-admin.min.css" />
+    <Content Include="Theme\sb-admin\forgot-password.html" />
+    <Content Include="Theme\sb-admin\gulpfile.js" />
+    <Content Include="Theme\sb-admin\index.html" />
+    <Content Include="Theme\sb-admin\js\sb-admin-charts.js" />
+    <Content Include="Theme\sb-admin\js\sb-admin-charts.min.js" />
+    <Content Include="Theme\sb-admin\js\sb-admin-datatables.js" />
+    <Content Include="Theme\sb-admin\js\sb-admin-datatables.min.js" />
+    <Content Include="Theme\sb-admin\js\sb-admin.js" />
+    <Content Include="Theme\sb-admin\js\sb-admin.min.js" />
+    <Content Include="Theme\sb-admin\login.html" />
+    <Content Include="Theme\sb-admin\navbar.html" />
+    <Content Include="Theme\sb-admin\register.html" />
+    <Content Include="Theme\sb-admin\tables.html" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Theme\sb-admin\vendor\chart.js\Chart.bundle.js" />
+    <Content Include="Theme\sb-admin\vendor\chart.js\Chart.bundle.min.js" />
+    <Content Include="Theme\sb-admin\vendor\chart.js\Chart.js" />
+    <Content Include="Theme\sb-admin\vendor\chart.js\Chart.min.js" />
+    <Content Include="Theme\sb-admin\vendor\datatables\dataTables.bootstrap4.css" />
+    <Content Include="Theme\sb-admin\vendor\datatables\dataTables.bootstrap4.js" />
+    <Content Include="Theme\sb-admin\vendor\datatables\jquery.dataTables.js" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Theme\sb-admin\vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="Theme\sb-admin\vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="Theme\sb-admin\vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="Theme\sb-admin\vendor\jquery\jquery.js" />
+    <Content Include="Theme\sb-admin\vendor\jquery\jquery.min.js" />
+    <Content Include="Theme\sb-admin\vendor\jquery\jquery.slim.js" />
+    <Content Include="Theme\sb-admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -374,6 +464,100 @@
     <Content Include="Views\Requisitions\Details.cshtml" />
     <Content Include="Views\Requisitions\Edit.cshtml" />
     <Content Include="Views\Requisitions\Index.cshtml" />
+    <Content Include="Views\Circulars\Create.cshtml" />
+    <Content Include="Views\Circulars\Delete.cshtml" />
+    <Content Include="Views\Circulars\Details.cshtml" />
+    <Content Include="Views\Circulars\Edit.cshtml" />
+    <Content Include="Views\Circulars\Index.cshtml" />
+    <Content Include="Theme\sb-admin\.gitignore" />
+    <Content Include="Theme\sb-admin\.jsbeautifyrc" />
+    <Content Include="Theme\sb-admin\.travis.yml" />
+    <Content Include="Theme\sb-admin\LICENSE" />
+    <Content Include="Theme\sb-admin\package-lock.json" />
+    <Content Include="Theme\sb-admin\package.json" />
+    <Content Include="Theme\sb-admin\pug\blank.pug" />
+    <Content Include="Theme\sb-admin\pug\cards.pug" />
+    <Content Include="Theme\sb-admin\pug\charts.pug" />
+    <Content Include="Theme\sb-admin\pug\forgot-password.pug" />
+    <Content Include="Theme\sb-admin\pug\includes\css\core.pug" />
+    <Content Include="Theme\sb-admin\pug\includes\css\custom.pug" />
+    <Content Include="Theme\sb-admin\pug\includes\footer.pug" />
+    <Content Include="Theme\sb-admin\pug\includes\js\core.pug" />
+    <Content Include="Theme\sb-admin\pug\includes\js\custom.pug" />
+    <Content Include="Theme\sb-admin\pug\includes\modals\logout.pug" />
+    <Content Include="Theme\sb-admin\pug\includes\navbar.pug" />
+    <Content Include="Theme\sb-admin\pug\includes\scroll-to-top.pug" />
+    <Content Include="Theme\sb-admin\pug\index.pug" />
+    <Content Include="Theme\sb-admin\pug\login.pug" />
+    <Content Include="Theme\sb-admin\pug\navbar.pug" />
+    <Content Include="Theme\sb-admin\pug\register.pug" />
+    <Content Include="Theme\sb-admin\pug\tables.pug" />
+    <Content Include="Theme\sb-admin\README.md" />
+    <Content Include="Theme\sb-admin\scss\navbar\_navbar_colors.scss" />
+    <Content Include="Theme\sb-admin\scss\navbar\_navbar_fixed.scss" />
+    <Content Include="Theme\sb-admin\scss\navbar\_navbar_global.scss" />
+    <Content Include="Theme\sb-admin\scss\navbar\_navbar_static.scss" />
+    <Content Include="Theme\sb-admin\scss\navbar\_navbar_toggle.scss" />
+    <Content Include="Theme\sb-admin\scss\sb-admin.scss" />
+    <Content Include="Theme\sb-admin\scss\_cards.scss" />
+    <Content Include="Theme\sb-admin\scss\_footer.scss" />
+    <Content Include="Theme\sb-admin\scss\_global.scss" />
+    <Content Include="Theme\sb-admin\scss\_login.scss" />
+    <Content Include="Theme\sb-admin\scss\_mixins.scss" />
+    <Content Include="Theme\sb-admin\scss\_utilities.scss" />
+    <Content Include="Theme\sb-admin\scss\_variables.scss" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Theme\sb-admin\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\animated.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\core.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\icons.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\larger.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\list.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\path.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\less\variables.less" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Theme\sb-admin\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Theme\sb-admin\vendor\jquery\jquery.min.map" />
+    <Content Include="Theme\sb-admin\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Views\Shared\_Layout_old.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802040924512_firstmig.resx">
@@ -422,13 +606,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
