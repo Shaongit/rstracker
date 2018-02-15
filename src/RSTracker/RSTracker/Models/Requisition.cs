@@ -33,6 +33,9 @@ namespace RSTracker.Models
         public virtual Employee Emp { get; set; }
         public int VacancyType { get; set; }
         public DateTime LastWorkingDay { get; set; }
+        public int Status { get; set;  }
+        [ForeignKey("Status")]
+        public virtual Status Stat { get; set; }
 
 
 

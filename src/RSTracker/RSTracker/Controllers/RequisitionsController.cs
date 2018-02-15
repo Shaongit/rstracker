@@ -17,7 +17,7 @@ namespace RSTracker.Controllers
         // GET: Requisitions
         public ActionResult Index()
         {
-            var requisitions = db.Requisitions.Include(r => r.Dep).Include(r => r.Designation).Include(r => r.Div).Include(r => r.Emp).Include(r => r.Employee).Include(r => r.SubUni);
+            var requisitions = db.Requisitions.Include(r => r.Dep).Include(r => r.Designation).Include(r => r.Div).Include(r => r.Emp).Include(r => r.Employee).Include(r => r.Stat).Include(r => r.SubUni);
             return View(requisitions.ToList());
         }
 
@@ -44,6 +44,7 @@ namespace RSTracker.Controllers
             ViewBag.Division = new SelectList(db.Division, "Id", "Name");
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name");
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name");
+            ViewBag.Status = new SelectList(db.Status, "Id", "Name");
             ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name");
             return View();
         }
@@ -53,7 +54,7 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RefNo,RaisedBy,Position,Division,Dept,SubUnit,RequisitionDate,RequiredBy,VacancyType,LastWorkingDay")] Requisition requisition)
+        public ActionResult Create([Bind(Include = "Id,RefNo,RaisedBy,Position,Division,Dept,SubUnit,RequisitionDate,RequiredBy,VacancyType,LastWorkingDay,Status")] Requisition requisition)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +68,7 @@ namespace RSTracker.Controllers
             ViewBag.Division = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
+            ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
             ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
             return View(requisition);
         }
@@ -88,6 +90,7 @@ namespace RSTracker.Controllers
             ViewBag.Division = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
+            ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
             ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
             return View(requisition);
         }
@@ -97,7 +100,7 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RefNo,RaisedBy,Position,Division,Dept,SubUnit,RequisitionDate,RequiredBy,VacancyType,LastWorkingDay")] Requisition requisition)
+        public ActionResult Edit([Bind(Include = "Id,RefNo,RaisedBy,Position,Division,Dept,SubUnit,RequisitionDate,RequiredBy,VacancyType,LastWorkingDay,Status")] Requisition requisition)
         {
             if (ModelState.IsValid)
             {
@@ -110,6 +113,7 @@ namespace RSTracker.Controllers
             ViewBag.Division = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
+            ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
             ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
             return View(requisition);
         }
