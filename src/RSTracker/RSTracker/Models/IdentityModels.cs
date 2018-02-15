@@ -37,5 +37,6 @@ namespace RSTracker.Models
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Requisition> Requisitions { get; set; }
         public DbSet<Circular> Circular { get; set; }
+        public DbSet<Status> Status { get; set; }
     }
 }
