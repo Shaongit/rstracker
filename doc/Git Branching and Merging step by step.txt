@@ -36,6 +36,10 @@ $ git branch -av
 7. $ git push
 8. from https://github.com/Shaongit/rstracker/tree/mbranch1 -> Click button - Compare and pull request
 9. Click pull request
-10. Select Merge pull request e.g select sqash merge click Merge pull request button -> Confirm merge 
-11. 
+10. Select Merge pull request e.g select sqash merge click Merge pull request button -> Confirm merge
+
+---------checkout master to keep update your local branch----
+11. git checkout master
+12. $ git pull
+ 
 11. 
