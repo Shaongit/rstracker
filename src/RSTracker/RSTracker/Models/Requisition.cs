@@ -9,35 +9,67 @@ namespace RSTracker.Models
 {
     public class Requisition
     {
+        public Requisition()
+        {
+            CreateDate = DateTime.Now;
+            ModifiedDate = DateTime.Now;
+            CreatedBy = null;
+            ModifiedBy = null;
+        }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required()]
+        [Display(Name = "Ref. No")]
         public string RefNo { get; set; }
-        public int RaisedBy { get; set; }
+
+        //Employee Id
+        [Display(Name ="Raised by")]
+        public int? RaisedBy { get; set; }
         [ForeignKey("RaisedBy")]
         public virtual Employee Employee { get; set; }
-        public int Position { get; set; }
-        [ForeignKey("Position")]
+
+        //Designation Id
+        public int? PositionId { get; set; }
+        [ForeignKey("PositionId")]
         public virtual Designation Designation { get; set; }
-        public int Division { get; set; }
-        [ForeignKey("Division")]
-        public virtual Division Div { get; set; }
-        public int Dept { get; set; }
-        [ForeignKey("Dept")]
-        public virtual Dept Dep { get; set; }
-        public int SubUnit { get; set; }
-        [ForeignKey("SubUnit")]
-        public virtual SubUnit SubUni { get; set; }
-        public DateTime RequisitionDate { get; set; }
-        public int RequiredBy { get; set; }
+
+        public int? DivisionId { get; set; }
+        [ForeignKey("DivisionId")]
+        public virtual Division Division { get; set; }
+
+        [Display(Name ="Dept")]
+        public int? DeptId { get; set; }
+        [ForeignKey("DeptId")]
+        public virtual Dept Dept { get; set; }
+
+        public int? SubUnitId { get; set; }
+        [ForeignKey("SubUnitId")]
+        public virtual SubUnit SubUnit { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name ="Requisition Date")]
+        public DateTime? RequisitionDate { get; set; }
+
+        
+        public int? RequiredBy { get; set; }
         [ForeignKey("RequiredBy")]
-        public virtual Employee Emp { get; set; }
-        public int VacancyType { get; set; }
+        public virtual Employee RequiredByEmp { get; set; }
+
+        public int? VacancyTypeId { get; set; }
+
+        [Display(Name ="Last Working Day")]
         public DateTime LastWorkingDay { get; set; }
-        public int Status { get; set;  }
-        [ForeignKey("Status")]
-        public virtual Status Stat { get; set; }
+        public int? StatusId { get; set;  }
+        [ForeignKey("StatusId")]
+        public virtual Status Status { get; set; }
 
+        public DateTime CreateDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
-
+        //User Id
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }
