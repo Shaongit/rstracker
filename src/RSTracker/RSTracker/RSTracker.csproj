@@ -267,6 +267,10 @@
     <Compile Include="Migrations\201802190902109_modified-div.Designer.cs">
       <DependentUpon>201802190902109_modified-div.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802200704236_addrequiredfield.cs" />
+    <Compile Include="Migrations\201802200704236_addrequiredfield.Designer.cs">
+      <DependentUpon>201802200704236_addrequiredfield.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Circular.cs" />
@@ -608,6 +612,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802190902109_modified-div.resx">
       <DependentUpon>201802190902109_modified-div.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802200704236_addrequiredfield.resx">
+      <DependentUpon>201802200704236_addrequiredfield.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,34 +1,30 @@
 ﻿@model RSTracker.Models.Dept
 
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Department details</li>
+</ol>
 
 <div>
-    <h4>Dept</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="row">
+        <dt class="col-md-2">
             @Html.DisplayNameFor(model => model.Division.Name)
         </dt>
 
-        <dd>
+        <dd class="col-md-3">
             @Html.DisplayFor(model => model.Division.Name)
         </dd>
 
-        <dt>
+        <dt class="col-md-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
-        <dd>
+        <dd class="col-md-3">
             @Html.DisplayFor(model => model.Name)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" }) |
+    @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-outline-primary" })
 </p>
