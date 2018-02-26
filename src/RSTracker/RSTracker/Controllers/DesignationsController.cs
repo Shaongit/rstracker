@@ -17,7 +17,7 @@ namespace RSTracker.Controllers
         // GET: Designations
         public ActionResult Index()
         {
-            var designation = db.Designation.Include(d => d.Dept);
+            var designation = db.Designation.Include(d => d.Division);
             return View(designation.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace RSTracker.Controllers
         // GET: Designations/Create
         public ActionResult Create()
         {
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name");
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,DeptId")] Designation designation)
+        public ActionResult Create([Bind(Include = "Id,Name,DivisionId")] Designation designation)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace RSTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", designation.DeptId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", designation.DivisionId);
             return View(designation);
         }
 
@@ -73,7 +73,7 @@ namespace RSTracker.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", designation.DeptId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", designation.DivisionId);
             return View(designation);
         }
 
@@ -82,7 +82,7 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,DeptId")] Designation designation)
+        public ActionResult Edit([Bind(Include = "Id,Name,DivisionId")] Designation designation)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace RSTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", designation.DeptId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", designation.DivisionId);
             return View(designation);
         }
 

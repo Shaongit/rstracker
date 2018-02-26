@@ -14,7 +14,7 @@ namespace RSTracker.Models
         [Display(Name ="Employee Name")]
         [Required()]
         public string Name { get; set; }
-        public int DesignationId { get; set; }
+        public int ?DesignationId { get; set; }
         [ForeignKey("DesignationId")]
         public virtual Designation Designation { get; set; }
         public int DeptId { get; set; }

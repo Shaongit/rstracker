@@ -14,9 +14,10 @@ namespace RSTracker.Models
         [Display(Name ="Designation")]
         [Required()]
         public string Name { get; set; }
-        public int DeptId { get; set; }
-        [ForeignKey("DeptId")]
-        public virtual Dept Dept { get; set; }
+
+        public int DivisionId { get; set; }
+        [ForeignKey("DivisionId")]
+        public virtual Division Division { get; set; }
         public virtual List<Employee> Employees { get; set; }
     }
 }
