@@ -35,6 +35,7 @@ namespace RSTracker.Models
         [ForeignKey("PositionId")]
         public virtual Designation Designation { get; set; }
 
+        [Display(Name ="Division")]
         public int? DivisionId { get; set; }
         [ForeignKey("DivisionId")]
         public virtual Division Division { get; set; }
@@ -44,6 +45,7 @@ namespace RSTracker.Models
         [ForeignKey("DeptId")]
         public virtual Dept Dept { get; set; }
 
+        [Display(Name ="Sub Unit")]
         public int? SubUnitId { get; set; }
         [ForeignKey("SubUnitId")]
         public virtual SubUnit SubUnit { get; set; }
@@ -52,15 +54,19 @@ namespace RSTracker.Models
         [Display(Name ="Requisition Date")]
         public DateTime? RequisitionDate { get; set; }
 
-        
+        [Display(Name = "Required by")]
         public int? RequiredBy { get; set; }
         [ForeignKey("RequiredBy")]
         public virtual Employee RequiredByEmp { get; set; }
 
+        [Display(Name ="Vacancy Type")]
         public int? VacancyTypeId { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name ="Last Working Day")]
         public DateTime LastWorkingDay { get; set; }
+
+        [Display(Name ="Status")]
         public int? StatusId { get; set;  }
         [ForeignKey("StatusId")]
         public virtual Status Status { get; set; }

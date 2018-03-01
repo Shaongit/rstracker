@@ -101,13 +101,22 @@ namespace RSTracker.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Dept = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
-            ViewBag.Position = new SelectList(db.Designation, "Id", "Name", requisition.PositionId);
-            ViewBag.Division = new SelectList(db.Division, "Id", "Name", requisition.Division);
+            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
+            ViewBag.PositionId = new SelectList(db.Designation, "Id", "Name", requisition.PositionId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
-            ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
-            ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
+            ViewBag.StatusId = new SelectList(db.Status, "Id", "Name", requisition.Status);
+            ViewBag.SubUnitId = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
+
+            List<SelectListItem> vacancyTypeList = new List<SelectListItem>();
+            vacancyTypeList.Add(new SelectListItem { Text = "New", Value = "1" });
+            vacancyTypeList.Add(new SelectListItem { Text = "Replacement", Value = "2" });
+
+            ViewBag.VacancyTypeId = new SelectList(vacancyTypeList, "Value", "Text",requisition.VacancyTypeId);
+
+            //ViewBag.VacancyTypeId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
+            //ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
             return View(requisition);
         }
 
@@ -116,7 +125,7 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RefNo,RaisedBy,Position,Division,Dept,SubUnit,RequisitionDate,RequiredBy,VacancyType,LastWorkingDay,Status")] Requisition requisition)
+        public ActionResult Edit(Requisition requisition)
         {
             if (ModelState.IsValid)
             {
@@ -131,6 +140,13 @@ namespace RSTracker.Controllers
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
             ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
             ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
+
+            List<SelectListItem> vacancyTypeList = new List<SelectListItem>();
+            vacancyTypeList.Add(new SelectListItem { Text = "New", Value = "1" });
+            vacancyTypeList.Add(new SelectListItem { Text = "Replacement", Value = "2" });
+
+            ViewBag.VacancyTypeId = new SelectList(vacancyTypeList, "Value", "Text", requisition.VacancyTypeId);
+
             return View(requisition);
         }
 
