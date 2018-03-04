@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
+using RSTracker.Utility;
 
 namespace RSTracker.Controllers
 {
@@ -17,7 +18,7 @@ namespace RSTracker.Controllers
         // GET: Requisitions
         public ActionResult Index()
         {
-            var requisitions = db.Requisitions.Include(r => r.Dep).Include(r => r.Designation).Include(r => r.Div).Include(r => r.Emp).Include(r => r.Employee).Include(r => r.Stat).Include(r => r.SubUni);
+            var requisitions = db.Requisitions.Include(r => r.Dept).Include(r => r.Designation).Include(r => r.Division).Include(r => r.RequiredByEmp).Include(r => r.Employee).Include(r => r.Status).Include(r => r.SubUnit);
             return View(requisitions.ToList());
         }
 
@@ -28,7 +29,11 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Requisition requisition = db.Requisitions.Find(id);
+            int vacancyTypeId = requisition.VacancyTypeId ?? 0;
+            requisition.VacancyTypeName = VacancyType.GetVacancyType(vacancyTypeId);
+
             if (requisition == null)
             {
                 return HttpNotFound();
@@ -39,13 +44,20 @@ namespace RSTracker.Controllers
         // GET: Requisitions/Create
         public ActionResult Create()
         {
-            ViewBag.Dept = new SelectList(db.Dept, "Id", "Name");
+            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name");
             ViewBag.Position = new SelectList(db.Designation, "Id", "Name");
-            ViewBag.Division = new SelectList(db.Division, "Id", "Name");
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name");
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name");
             ViewBag.Status = new SelectList(db.Status, "Id", "Name");
             ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name");
+
+            List<SelectListItem> vacancyTypeList = new List<SelectListItem>();
+            vacancyTypeList.Add(new SelectListItem { Text = "New", Value = "1" });
+            vacancyTypeList.Add(new SelectListItem { Text = "Replacement", Value = "2" });
+
+            ViewBag.VacancyTypeId = vacancyTypeList;
+
             return View();
         }
 
@@ -54,7 +66,8 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RefNo,RaisedBy,Position,Division,Dept,SubUnit,RequisitionDate,RequiredBy,VacancyType,LastWorkingDay,Status")] Requisition requisition)
+        //public ActionResult Create([Bind(Include = "Id,RefNo,RaisedBy,Position,Division,Dept,SubUnit,RequisitionDate,RequiredBy,VacancyType,LastWorkingDay,Status")] Requisition requisition)
+        public ActionResult Create(Requisition requisition)
         {
             if (ModelState.IsValid)
             {
@@ -63,13 +76,21 @@ namespace RSTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Dept = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
-            ViewBag.Position = new SelectList(db.Designation, "Id", "Name", requisition.Position);
-            ViewBag.Division = new SelectList(db.Division, "Id", "Name", requisition.Division);
+            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
+            ViewBag.Position = new SelectList(db.Designation, "Id", "Name", requisition.PositionId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
             ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
             ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
+
+            List<SelectListItem> vacancyTypeList = new List<SelectListItem>();
+            vacancyTypeList.Add(new SelectListItem { Text = "New", Value = "1" });
+            vacancyTypeList.Add(new SelectListItem { Text = "Replacement", Value = "2" });
+
+            ViewBag.VacancyTypeId = vacancyTypeList;
+
+
             return View(requisition);
         }
 
@@ -85,13 +106,22 @@ namespace RSTracker.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Dept = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
-            ViewBag.Position = new SelectList(db.Designation, "Id", "Name", requisition.Position);
-            ViewBag.Division = new SelectList(db.Division, "Id", "Name", requisition.Division);
+            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
+            ViewBag.PositionId = new SelectList(db.Designation, "Id", "Name", requisition.PositionId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
-            ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
-            ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
+            ViewBag.StatusId = new SelectList(db.Status, "Id", "Name", requisition.Status);
+            ViewBag.SubUnitId = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
+
+            List<SelectListItem> vacancyTypeList = new List<SelectListItem>();
+            vacancyTypeList.Add(new SelectListItem { Text = "New", Value = "1" });
+            vacancyTypeList.Add(new SelectListItem { Text = "Replacement", Value = "2" });
+
+            ViewBag.VacancyTypeId = new SelectList(vacancyTypeList, "Value", "Text",requisition.VacancyTypeId);
+
+            //ViewBag.VacancyTypeId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
+            //ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
             return View(requisition);
         }
 
@@ -100,7 +130,7 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RefNo,RaisedBy,Position,Division,Dept,SubUnit,RequisitionDate,RequiredBy,VacancyType,LastWorkingDay,Status")] Requisition requisition)
+        public ActionResult Edit(Requisition requisition)
         {
             if (ModelState.IsValid)
             {
@@ -109,12 +139,19 @@ namespace RSTracker.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Dept = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
-            ViewBag.Position = new SelectList(db.Designation, "Id", "Name", requisition.Position);
+            ViewBag.Position = new SelectList(db.Designation, "Id", "Name", requisition.PositionId);
             ViewBag.Division = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
             ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
             ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
+
+            List<SelectListItem> vacancyTypeList = new List<SelectListItem>();
+            vacancyTypeList.Add(new SelectListItem { Text = "New", Value = "1" });
+            vacancyTypeList.Add(new SelectListItem { Text = "Replacement", Value = "2" });
+
+            ViewBag.VacancyTypeId = new SelectList(vacancyTypeList, "Value", "Text", requisition.VacancyTypeId);
+
             return View(requisition);
         }
 
