@@ -62,6 +62,9 @@ namespace RSTracker.Models
         [Display(Name ="Vacancy Type")]
         public int? VacancyTypeId { get; set; }
 
+        [NotMapped]
+        public string VacancyTypeName { get; set; }
+
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name ="Last Working Day")]
         public DateTime LastWorkingDay { get; set; }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
+using RSTracker.Utility;
 
 namespace RSTracker.Controllers
 {
@@ -28,7 +29,11 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Requisition requisition = db.Requisitions.Find(id);
+            int vacancyTypeId = requisition.VacancyTypeId ?? 0;
+            requisition.VacancyTypeName = VacancyType.GetVacancyType(vacancyTypeId);
+
             if (requisition == null)
             {
                 return HttpNotFound();
@@ -39,7 +44,7 @@ namespace RSTracker.Controllers
         // GET: Requisitions/Create
         public ActionResult Create()
         {
-            ViewBag.Dept = new SelectList(db.Dept, "Id", "Name");
+            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name");
             ViewBag.Position = new SelectList(db.Designation, "Id", "Name");
             ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name");
@@ -71,9 +76,9 @@ namespace RSTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Dept = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
+            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
             ViewBag.Position = new SelectList(db.Designation, "Id", "Name", requisition.PositionId);
-            ViewBag.Division = new SelectList(db.Division, "Id", "Name", requisition.Division);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
             ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
