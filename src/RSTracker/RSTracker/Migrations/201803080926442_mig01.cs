@@ -74,13 +74,10 @@ namespace RSTracker.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                         DivisionId = c.Int(nullable: false),
-                        Employees_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Divisions", t => t.DivisionId, cascadeDelete: true)
-                .ForeignKey("dbo.Employees", t => t.Employees_Id)
-                .Index(t => t.DivisionId)
-                .Index(t => t.Employees_Id);
+                .Index(t => t.DivisionId);
             
             CreateTable(
                 "dbo.Divisions",
@@ -105,19 +102,16 @@ namespace RSTracker.Migrations
                         DeptId = c.Int(nullable: false),
                         DivisionId = c.Int(nullable: false),
                         SubUnitId = c.Int(nullable: false),
-                        Division_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Depts", t => t.DeptId, cascadeDelete: true)
                 .ForeignKey("dbo.Designations", t => t.DesignationId)
                 .ForeignKey("dbo.Divisions", t => t.DivisionId)
                 .ForeignKey("dbo.SubUnits", t => t.SubUnitId, cascadeDelete: true)
-                .ForeignKey("dbo.Divisions", t => t.Division_Id)
                 .Index(t => t.DesignationId)
                 .Index(t => t.DeptId)
                 .Index(t => t.DivisionId)
-                .Index(t => t.SubUnitId)
-                .Index(t => t.Division_Id);
+                .Index(t => t.SubUnitId);
             
             CreateTable(
                 "dbo.Designations",
@@ -236,9 +230,7 @@ namespace RSTracker.Migrations
             DropForeignKey("dbo.Requisitions", "DivisionId", "dbo.Divisions");
             DropForeignKey("dbo.Requisitions", "PositionId", "dbo.Designations");
             DropForeignKey("dbo.Requisitions", "DeptId", "dbo.Depts");
-            DropForeignKey("dbo.Depts", "Employees_Id", "dbo.Employees");
             DropForeignKey("dbo.Depts", "DivisionId", "dbo.Divisions");
-            DropForeignKey("dbo.Employees", "Division_Id", "dbo.Divisions");
             DropForeignKey("dbo.Employees", "SubUnitId", "dbo.SubUnits");
             DropForeignKey("dbo.SubUnits", "DeptId", "dbo.Depts");
             DropForeignKey("dbo.Employees", "DivisionId", "dbo.Divisions");
@@ -253,12 +245,10 @@ namespace RSTracker.Migrations
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.SubUnits", new[] { "DeptId" });
             DropIndex("dbo.Designations", new[] { "DivisionId" });
-            DropIndex("dbo.Employees", new[] { "Division_Id" });
             DropIndex("dbo.Employees", new[] { "SubUnitId" });
             DropIndex("dbo.Employees", new[] { "DivisionId" });
             DropIndex("dbo.Employees", new[] { "DeptId" });
             DropIndex("dbo.Employees", new[] { "DesignationId" });
-            DropIndex("dbo.Depts", new[] { "Employees_Id" });
             DropIndex("dbo.Depts", new[] { "DivisionId" });
             DropIndex("dbo.Requisitions", new[] { "StatusId" });
             DropIndex("dbo.Requisitions", new[] { "RequiredBy" });

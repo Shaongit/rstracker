@@ -211,9 +211,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803080528179_mig01.cs" />
-    <Compile Include="Migrations\201803080528179_mig01.Designer.cs">
-      <DependentUpon>201803080528179_mig01.cs</DependentUpon>
+    <Compile Include="Migrations\201803080926442_mig01.cs" />
+    <Compile Include="Migrations\201803080926442_mig01.Designer.cs">
+      <DependentUpon>201803080926442_mig01.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,6 +232,10 @@
     <Compile Include="Utility\VacancyType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\RSTrackerDB.mdf" />
+    <Content Include="App_Data\RSTrackerDB_log.ldf">
+      <DependentUpon>RSTrackerDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -610,12 +614,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803080528179_mig01.resx">
-      <DependentUpon>201803080528179_mig01.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803080926442_mig01.resx">
+      <DependentUpon>201803080926442_mig01.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

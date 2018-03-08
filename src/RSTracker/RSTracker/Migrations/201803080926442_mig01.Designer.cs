@@ -13,7 +13,7 @@ namespace RSTracker.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201803080528179_mig01"; }
+            get { return "201803080926442_mig01"; }
         }
         
         string IMigrationMetadata.Source
