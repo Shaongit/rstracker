@@ -211,9 +211,73 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803080528179_mig01.cs" />
-    <Compile Include="Migrations\201803080528179_mig01.Designer.cs">
-      <DependentUpon>201803080528179_mig01.cs</DependentUpon>
+    <Compile Include="Migrations\201802040924512_firstmig.cs" />
+    <Compile Include="Migrations\201802040924512_firstmig.Designer.cs">
+      <DependentUpon>201802040924512_firstmig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802060826307_add-division.cs" />
+    <Compile Include="Migrations\201802060826307_add-division.Designer.cs">
+      <DependentUpon>201802060826307_add-division.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802060834032_add-foreign.cs" />
+    <Compile Include="Migrations\201802060834032_add-foreign.Designer.cs">
+      <DependentUpon>201802060834032_add-foreign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802061020063_add-designation.cs" />
+    <Compile Include="Migrations\201802061020063_add-designation.Designer.cs">
+      <DependentUpon>201802061020063_add-designation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802061028303_add-subunit.cs" />
+    <Compile Include="Migrations\201802061028303_add-subunit.Designer.cs">
+      <DependentUpon>201802061028303_add-subunit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070315243_createEmployee.cs" />
+    <Compile Include="Migrations\201802070315243_createEmployee.Designer.cs">
+      <DependentUpon>201802070315243_createEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070339293_m-update database.cs" />
+    <Compile Include="Migrations\201802070339293_m-update database.Designer.cs">
+      <DependentUpon>201802070339293_m-update database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070409144_m-foreign key update.cs" />
+    <Compile Include="Migrations\201802070409144_m-foreign key update.Designer.cs">
+      <DependentUpon>201802070409144_m-foreign key update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802111002071_add-requisition.cs" />
+    <Compile Include="Migrations\201802111002071_add-requisition.Designer.cs">
+      <DependentUpon>201802111002071_add-requisition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802111033019_add-circular.cs" />
+    <Compile Include="Migrations\201802111033019_add-circular.Designer.cs">
+      <DependentUpon>201802111033019_add-circular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802150452473_add-status.cs" />
+    <Compile Include="Migrations\201802150452473_add-status.Designer.cs">
+      <DependentUpon>201802150452473_add-status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802150507526_add-statusfk.cs" />
+    <Compile Include="Migrations\201802150507526_add-statusfk.Designer.cs">
+      <DependentUpon>201802150507526_add-statusfk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802151114334_modified-division-model.cs" />
+    <Compile Include="Migrations\201802151114334_modified-division-model.Designer.cs">
+      <DependentUpon>201802151114334_modified-division-model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802190902109_modified-div.cs" />
+    <Compile Include="Migrations\201802190902109_modified-div.Designer.cs">
+      <DependentUpon>201802190902109_modified-div.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802200704236_addrequiredfield.cs" />
+    <Compile Include="Migrations\201802200704236_addrequiredfield.Designer.cs">
+      <DependentUpon>201802200704236_addrequiredfield.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802260436092_updatedegignation.cs" />
+    <Compile Include="Migrations\201802260436092_updatedegignation.Designer.cs">
+      <DependentUpon>201802260436092_updatedegignation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802260611156_updateemployee.cs" />
+    <Compile Include="Migrations\201802260611156_updateemployee.Designer.cs">
+      <DependentUpon>201802260611156_updateemployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -229,25 +293,23 @@
     <Compile Include="Models\SubUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Utility\VacancyType.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-datetimepicker.css" />
-    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="App_Data\RSTrackerDB.mdf" />
+    <Content Include="App_Data\RSTrackerDB_log.ldf">
+      <DependentUpon>RSTrackerDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -261,83 +323,6 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap\wells.less" />
-    <Content Include="Content\bootstrap\variables.less" />
-    <Content Include="Content\bootstrap\utilities.less" />
-    <Content Include="Content\bootstrap\type.less" />
-    <Content Include="Content\bootstrap\tooltip.less" />
-    <Content Include="Content\bootstrap\thumbnails.less" />
-    <Content Include="Content\bootstrap\theme.less" />
-    <Content Include="Content\bootstrap\tables.less" />
-    <Content Include="Content\bootstrap\scaffolding.less" />
-    <Content Include="Content\bootstrap\responsive-utilities.less" />
-    <Content Include="Content\bootstrap\responsive-embed.less" />
-    <Content Include="Content\bootstrap\progress-bars.less" />
-    <Content Include="Content\bootstrap\print.less" />
-    <Content Include="Content\bootstrap\popovers.less" />
-    <Content Include="Content\bootstrap\panels.less" />
-    <Content Include="Content\bootstrap\pagination.less" />
-    <Content Include="Content\bootstrap\pager.less" />
-    <Content Include="Content\bootstrap\normalize.less" />
-    <Content Include="Content\bootstrap\navs.less" />
-    <Content Include="Content\bootstrap\navbar.less" />
-    <Content Include="Content\bootstrap\modals.less" />
-    <Content Include="Content\bootstrap\mixins\vendor-prefixes.less" />
-    <Content Include="Content\bootstrap\mixins\text-overflow.less" />
-    <Content Include="Content\bootstrap\mixins\text-emphasis.less" />
-    <Content Include="Content\bootstrap\mixins\table-row.less" />
-    <Content Include="Content\bootstrap\mixins\tab-focus.less" />
-    <Content Include="Content\bootstrap\mixins\size.less" />
-    <Content Include="Content\bootstrap\mixins\responsive-visibility.less" />
-    <Content Include="Content\bootstrap\mixins\resize.less" />
-    <Content Include="Content\bootstrap\mixins\reset-text.less" />
-    <Content Include="Content\bootstrap\mixins\reset-filter.less" />
-    <Content Include="Content\bootstrap\mixins\progress-bar.less" />
-    <Content Include="Content\bootstrap\mixins\panels.less" />
-    <Content Include="Content\bootstrap\mixins\pagination.less" />
-    <Content Include="Content\bootstrap\mixins\opacity.less" />
-    <Content Include="Content\bootstrap\mixins\nav-vertical-align.less" />
-    <Content Include="Content\bootstrap\mixins\nav-divider.less" />
-    <Content Include="Content\bootstrap\mixins\list-group.less" />
-    <Content Include="Content\bootstrap\mixins\labels.less" />
-    <Content Include="Content\bootstrap\mixins\image.less" />
-    <Content Include="Content\bootstrap\mixins\hide-text.less" />
-    <Content Include="Content\bootstrap\mixins\grid.less" />
-    <Content Include="Content\bootstrap\mixins\grid-framework.less" />
-    <Content Include="Content\bootstrap\mixins\gradients.less" />
-    <Content Include="Content\bootstrap\mixins\forms.less" />
-    <Content Include="Content\bootstrap\mixins\clearfix.less" />
-    <Content Include="Content\bootstrap\mixins\center-block.less" />
-    <Content Include="Content\bootstrap\mixins\buttons.less" />
-    <Content Include="Content\bootstrap\mixins\border-radius.less" />
-    <Content Include="Content\bootstrap\mixins\background-variant.less" />
-    <Content Include="Content\bootstrap\mixins\alerts.less" />
-    <Content Include="Content\bootstrap\mixins.less" />
-    <Content Include="Content\bootstrap\media.less" />
-    <Content Include="Content\bootstrap\list-group.less" />
-    <Content Include="Content\bootstrap\labels.less" />
-    <Content Include="Content\bootstrap\jumbotron.less" />
-    <Content Include="Content\bootstrap\input-groups.less" />
-    <Content Include="Content\bootstrap\grid.less" />
-    <Content Include="Content\bootstrap\glyphicons.less" />
-    <Content Include="Content\bootstrap\forms.less" />
-    <Content Include="Content\bootstrap\dropdowns.less" />
-    <Content Include="Content\bootstrap\component-animations.less" />
-    <Content Include="Content\bootstrap\code.less" />
-    <Content Include="Content\bootstrap\close.less" />
-    <Content Include="Content\bootstrap\carousel.less" />
-    <Content Include="Content\bootstrap\buttons.less" />
-    <Content Include="Content\bootstrap\button-groups.less" />
-    <Content Include="Content\bootstrap\breadcrumbs.less" />
-    <Content Include="Content\bootstrap\bootstrap.less" />
-    <Content Include="Content\bootstrap\badges.less" />
-    <Content Include="Content\bootstrap\alerts.less" />
-    <Content Include="Content\_bootstrap-datetimepicker.less" />
-    <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <None Include="Properties\PublishProfiles\RSTracker - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\RSTracker - Web Deploy.pubxml" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -366,10 +351,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\moment-with-locales.js" />
-    <Content Include="Scripts\moment-with-locales.min.js" />
-    <Content Include="Scripts\moment.js" />
-    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -472,11 +453,6 @@
     <Content Include="Views\Depts\Details.cshtml" />
     <Content Include="Views\Depts\Edit.cshtml" />
     <Content Include="Views\Depts\Index.cshtml" />
-    <Content Include="Views\Designations\Create.cshtml" />
-    <Content Include="Views\Designations\Delete.cshtml" />
-    <Content Include="Views\Designations\Details.cshtml" />
-    <Content Include="Views\Designations\Edit.cshtml" />
-    <Content Include="Views\Designations\Index.cshtml" />
     <Content Include="Views\SubUnits\Create.cshtml" />
     <Content Include="Views\SubUnits\Delete.cshtml" />
     <Content Include="Views\SubUnits\Details.cshtml" />
@@ -603,6 +579,59 @@
     <Content Include="Views\Designations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802040924512_firstmig.resx">
+      <DependentUpon>201802040924512_firstmig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802060826307_add-division.resx">
+      <DependentUpon>201802060826307_add-division.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802060834032_add-foreign.resx">
+      <DependentUpon>201802060834032_add-foreign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802061020063_add-designation.resx">
+      <DependentUpon>201802061020063_add-designation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802061028303_add-subunit.resx">
+      <DependentUpon>201802061028303_add-subunit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070315243_createEmployee.resx">
+      <DependentUpon>201802070315243_createEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070339293_m-update database.resx">
+      <DependentUpon>201802070339293_m-update database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070409144_m-foreign key update.resx">
+      <DependentUpon>201802070409144_m-foreign key update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111002071_add-requisition.resx">
+      <DependentUpon>201802111002071_add-requisition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111033019_add-circular.resx">
+      <DependentUpon>201802111033019_add-circular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802150452473_add-status.resx">
+      <DependentUpon>201802150452473_add-status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802150507526_add-statusfk.resx">
+      <DependentUpon>201802150507526_add-statusfk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802151114334_modified-division-model.resx">
+      <DependentUpon>201802151114334_modified-division-model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802190902109_modified-div.resx">
+      <DependentUpon>201802190902109_modified-div.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802200704236_addrequiredfield.resx">
+      <DependentUpon>201802200704236_addrequiredfield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802260436092_updatedegignation.resx">
+      <DependentUpon>201802260436092_updatedegignation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802260611156_updateemployee.resx">
+      <DependentUpon>201802260611156_updateemployee.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
@@ -610,13 +639,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803080528179_mig01.resx">
-      <DependentUpon>201803080528179_mig01.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

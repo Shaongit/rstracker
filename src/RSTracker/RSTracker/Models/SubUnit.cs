@@ -12,6 +12,7 @@ namespace RSTracker.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Display(Name ="Sub Unit")]
+        [Required()]
         public string Name { get; set; }
         public int DeptId { get; set; }
         [ForeignKey("DeptId")]

@@ -7,13 +7,13 @@ namespace RSTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addsubunit : IMigrationMetadata
+    public sealed partial class mig01 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addsubunit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(mig01));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802061028303_add-subunit"; }
+            get { return "201803080528179_mig01"; }
         }
         
         string IMigrationMetadata.Source
