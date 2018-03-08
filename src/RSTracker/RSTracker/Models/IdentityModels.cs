@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RSTracker.Models;
 
 namespace RSTracker.Models
 {
@@ -38,5 +39,32 @@ namespace RSTracker.Models
         public DbSet<Requisition> Requisitions { get; set; }
         public DbSet<Circular> Circular { get; set; }
         public DbSet<Status> Status { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Division>()
+            //    .HasRequired(c => c.Employees)
+            //    .WithMany()
+            //    .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Employee>()
+           .HasRequired(c => c.Division)
+           .WithMany()
+           .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Dept>()
+            //    .HasRequired(c => c.Employees)
+            //    .WithMany()
+            //    .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SubUnit>()
+           .HasRequired(c => c.Dept)
+           .WithMany()
+           .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
+
+        }
     }
 }

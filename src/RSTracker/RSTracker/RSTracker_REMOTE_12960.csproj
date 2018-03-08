@@ -211,9 +211,69 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803080528179_mig01.cs" />
-    <Compile Include="Migrations\201803080528179_mig01.Designer.cs">
-      <DependentUpon>201803080528179_mig01.cs</DependentUpon>
+    <Compile Include="Migrations\201802040924512_firstmig.cs" />
+    <Compile Include="Migrations\201802040924512_firstmig.Designer.cs">
+      <DependentUpon>201802040924512_firstmig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802060826307_add-division.cs" />
+    <Compile Include="Migrations\201802060826307_add-division.Designer.cs">
+      <DependentUpon>201802060826307_add-division.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802060834032_add-foreign.cs" />
+    <Compile Include="Migrations\201802060834032_add-foreign.Designer.cs">
+      <DependentUpon>201802060834032_add-foreign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802061020063_add-designation.cs" />
+    <Compile Include="Migrations\201802061020063_add-designation.Designer.cs">
+      <DependentUpon>201802061020063_add-designation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802061028303_add-subunit.cs" />
+    <Compile Include="Migrations\201802061028303_add-subunit.Designer.cs">
+      <DependentUpon>201802061028303_add-subunit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070315243_createEmployee.cs" />
+    <Compile Include="Migrations\201802070315243_createEmployee.Designer.cs">
+      <DependentUpon>201802070315243_createEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070339293_m-update database.cs" />
+    <Compile Include="Migrations\201802070339293_m-update database.Designer.cs">
+      <DependentUpon>201802070339293_m-update database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070409144_m-foreign key update.cs" />
+    <Compile Include="Migrations\201802070409144_m-foreign key update.Designer.cs">
+      <DependentUpon>201802070409144_m-foreign key update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802111002071_add-requisition.cs" />
+    <Compile Include="Migrations\201802111002071_add-requisition.Designer.cs">
+      <DependentUpon>201802111002071_add-requisition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802111033019_add-circular.cs" />
+    <Compile Include="Migrations\201802111033019_add-circular.Designer.cs">
+      <DependentUpon>201802111033019_add-circular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802150452473_add-status.cs" />
+    <Compile Include="Migrations\201802150452473_add-status.Designer.cs">
+      <DependentUpon>201802150452473_add-status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802150507526_add-statusfk.cs" />
+    <Compile Include="Migrations\201802150507526_add-statusfk.Designer.cs">
+      <DependentUpon>201802150507526_add-statusfk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802151114334_modified-division-model.cs" />
+    <Compile Include="Migrations\201802151114334_modified-division-model.Designer.cs">
+      <DependentUpon>201802151114334_modified-division-model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802190902109_modified-div.cs" />
+    <Compile Include="Migrations\201802190902109_modified-div.Designer.cs">
+      <DependentUpon>201802190902109_modified-div.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802200903217_modify-requisition.cs" />
+    <Compile Include="Migrations\201802200903217_modify-requisition.Designer.cs">
+      <DependentUpon>201802200903217_modify-requisition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802201040564_requistion-enable-null.cs" />
+    <Compile Include="Migrations\201802201040564_requistion-enable-null.Designer.cs">
+      <DependentUpon>201802201040564_requistion-enable-null.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,6 +292,10 @@
     <Compile Include="Utility\VacancyType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\RSTrackerDB.mdf" />
+    <Content Include="App_Data\RSTrackerDB_log.ldf">
+      <DependentUpon>RSTrackerDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -499,7 +563,6 @@
     <Content Include="Views\Status\Index.cshtml" />
     <Content Include="Views\Requisitions\Create.cshtml" />
     <Content Include="Views\Requisitions\Delete.cshtml" />
-    <Content Include="Views\Requisitions\Details.cshtml" />
     <Content Include="Views\Requisitions\Edit.cshtml" />
     <Content Include="Views\Requisitions\Index.cshtml" />
     <Content Include="Views\Circulars\Create.cshtml" />
@@ -596,11 +659,57 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Designations\Create.cshtml" />
-    <Content Include="Views\Designations\Delete.cshtml" />
-    <Content Include="Views\Designations\Details.cshtml" />
-    <Content Include="Views\Designations\Edit.cshtml" />
-    <Content Include="Views\Designations\Index.cshtml" />
+    <Content Include="Views\Requisitions\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802040924512_firstmig.resx">
+      <DependentUpon>201802040924512_firstmig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802060826307_add-division.resx">
+      <DependentUpon>201802060826307_add-division.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802060834032_add-foreign.resx">
+      <DependentUpon>201802060834032_add-foreign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802061020063_add-designation.resx">
+      <DependentUpon>201802061020063_add-designation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802061028303_add-subunit.resx">
+      <DependentUpon>201802061028303_add-subunit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070315243_createEmployee.resx">
+      <DependentUpon>201802070315243_createEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070339293_m-update database.resx">
+      <DependentUpon>201802070339293_m-update database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070409144_m-foreign key update.resx">
+      <DependentUpon>201802070409144_m-foreign key update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111002071_add-requisition.resx">
+      <DependentUpon>201802111002071_add-requisition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111033019_add-circular.resx">
+      <DependentUpon>201802111033019_add-circular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802150452473_add-status.resx">
+      <DependentUpon>201802150452473_add-status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802150507526_add-statusfk.resx">
+      <DependentUpon>201802150507526_add-statusfk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802151114334_modified-division-model.resx">
+      <DependentUpon>201802151114334_modified-division-model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802190902109_modified-div.resx">
+      <DependentUpon>201802190902109_modified-div.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802200903217_modify-requisition.resx">
+      <DependentUpon>201802200903217_modify-requisition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802201040564_requistion-enable-null.resx">
+      <DependentUpon>201802201040564_requistion-enable-null.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -610,13 +719,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803080528179_mig01.resx">
-      <DependentUpon>201803080528179_mig01.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
