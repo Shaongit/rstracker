@@ -605,6 +605,8 @@
     <Content Include="Views\Designations\Details.cshtml" />
     <Content Include="Views\Designations\Edit.cshtml" />
     <Content Include="Views\Designations\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAnonymous.cshtml" />
+    <Content Include="Views\Account\Login - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
