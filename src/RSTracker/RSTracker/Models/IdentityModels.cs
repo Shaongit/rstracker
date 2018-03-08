@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RSTracker.Models;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace RSTracker.Models
 {
@@ -48,20 +49,45 @@ namespace RSTracker.Models
             //    .WithMany()
             //    .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Employee>()
-           .HasRequired(c => c.Division)
-           .WithMany()
-           .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Employee>()
+            //.HasRequired(c => c.Division)
+            //.WithMany()
+            //.HasForeignKey(d => d.DivisionId)
+            //.WillCascadeOnDelete(false);
 
             //modelBuilder.Entity<Dept>()
             //    .HasRequired(c => c.Employees)
             //    .WithMany()
             //    .WillCascadeOnDelete(false);
 
+            //        modelBuilder.Entity<Course>()
+            //.HasRequired(t => t.Department)
+            //.WithMany(t => t.Courses)
+            //.HasForeignKey(d => d.DepartmentID)
+            //.WillCascadeOnDelete(false);
+
+
+            // modelBuilder.Entity<SubUnit>()
+            //.HasRequired(c => c.Dept)
+            //.WithMany()
+            //.WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Employee>()
+
+            //.ForeignKey("dbo.Divisions", t => t.DivisionId, cascadeDelete: true)
+            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<Employee>()
+                .HasRequired(c => c.Division)
+                .WithMany(w=>w.Employees)
+                .HasForeignKey(d => d.DivisionId)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<SubUnit>()
-           .HasRequired(c => c.Dept)
-           .WithMany()
-           .WillCascadeOnDelete(false);
+                .HasRequired(c => c.Dept)
+                .WithMany(w => w.SubUnits)
+                .HasForeignKey(d => d.DeptId)
+                .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);
 
