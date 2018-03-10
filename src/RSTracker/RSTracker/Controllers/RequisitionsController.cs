@@ -19,7 +19,7 @@ namespace RSTracker.Controllers
         public ActionResult Index()
         {
             var requisitions = db.Requisitions.Include(r => r.Dept).Include(r => r.Designation).Include(r => r.Division).Include(r => r.RequiredByEmp).Include(r => r.Employee).Include(r => r.Status).Include(r => r.SubUnit);
-            return View(requisitions.ToList());
+            return View(requisitions.Where(p=>p.StatusId == 1 || p.StatusId == 3).OrderBy(p=>p.RequisitionDate).ToList());
         }
 
         // GET: Requisitions/Details/5
@@ -49,8 +49,8 @@ namespace RSTracker.Controllers
             ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name");
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name");
-            ViewBag.Status = new SelectList(db.Status, "Id", "Name");
-            ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name");
+            ViewBag.StatusId = new SelectList(db.Status, "Id", "Name");
+            ViewBag.SubUnitId = new SelectList(db.SubUnit, "Id", "Name");
 
             List<SelectListItem> vacancyTypeList = new List<SelectListItem>();
             vacancyTypeList.Add(new SelectListItem { Text = "New", Value = "1" });
@@ -81,8 +81,8 @@ namespace RSTracker.Controllers
             ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", requisition.Division);
             ViewBag.RequiredBy = new SelectList(db.Employee, "Id", "Name", requisition.RequiredBy);
             ViewBag.RaisedBy = new SelectList(db.Employee, "Id", "Name", requisition.RaisedBy);
-            ViewBag.Status = new SelectList(db.Status, "Id", "Name", requisition.Status);
-            ViewBag.SubUnit = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
+            ViewBag.StatusId = new SelectList(db.Status, "Id", "Name", requisition.Status);
+            ViewBag.SubUnitId = new SelectList(db.SubUnit, "Id", "Name", requisition.SubUnit);
 
             List<SelectListItem> vacancyTypeList = new List<SelectListItem>();
             vacancyTypeList.Add(new SelectListItem { Text = "New", Value = "1" });

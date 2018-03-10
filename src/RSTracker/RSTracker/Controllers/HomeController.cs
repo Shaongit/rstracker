@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace RSTracker.Controllers
 {
-    [Authorize()]
+    //[Authorize()]
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -15,7 +15,7 @@ namespace RSTracker.Controllers
         {
             var requisitions = db.Requisitions.ToList();
             //.Include(r => r.Dep).Include(r => r.Designation).Include(r => r.Div).Include(r => r.Emp).Include(r => r.Employee).Include(r => r.Stat).Include(r => r.SubUni);
-            return View(requisitions);
+            return View(requisitions.Where(p => p.StatusId == 1 || p.StatusId == 3).OrderBy(p => p.RequisitionDate).ToList());
         }
 
         public ActionResult About()
