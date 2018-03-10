@@ -8,6 +8,7 @@ Recruitment selection tracker known as RStracker is an web page application to t
 * Requisition 
 * Circular
 * Employee Information
+* Export report in excel format
 * Authentication and Authorization
 
 ### Development Tools & Technologies
