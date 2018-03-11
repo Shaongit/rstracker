@@ -1,95 +1,100 @@
 ﻿@model RSTracker.Models.Circular
-
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active"><h4>Details Circular</h4></li>
+</ol>
 
 <div>
-    <h4>Circular</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="row">
+        <dt class="col-mod-2">
             @Html.DisplayNameFor(model => model.Requisition.RefNo)
         </dt>
 
-        <dd>
+        <dd class="col-mod-3">
             @Html.DisplayFor(model => model.Requisition.RefNo)
         </dd>
-
-        <dt>
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
             @Html.DisplayNameFor(model => model.CircularDate)
         </dt>
 
-        <dd>
+        <dd class="col-mod-3">
             @Html.DisplayFor(model => model.CircularDate)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoOfCvFrom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoOfCvFrom)
-        </dd>
-
-        <dt>
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
             @Html.DisplayNameFor(model => model.NoOfCvFromAD)
         </dt>
 
-        <dd>
+        <dd class="col-mod-3">
             @Html.DisplayFor(model => model.NoOfCvFromAD)
         </dd>
-
-        <dt>
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
             @Html.DisplayNameFor(model => model.NoOfCvFromOnline)
         </dt>
 
-        <dd>
+        <dd class="col-mod-3">
             @Html.DisplayFor(model => model.NoOfCvFromOnline)
         </dd>
-
-        <dt>
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
             @Html.DisplayNameFor(model => model.NoOfCvFromHardcopy)
         </dt>
 
-        <dd>
+        <dd class="col-mod-3">
             @Html.DisplayFor(model => model.NoOfCvFromHardcopy)
         </dd>
-
-        <dt>
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
             @Html.DisplayNameFor(model => model.NoOfCvFromRef)
         </dt>
 
-        <dd>
+        <dd class="col-mod-3">
             @Html.DisplayFor(model => model.NoOfCvFromRef)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortLinedCvSendtoLm)
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
+            @Html.DisplayNameFor(model => model.CvSendtoLM)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShortLinedCvSendtoLm)
+        <dd class="col-mod-3">
+            @Html.DisplayFor(model => model.CvSendtoLM)
         </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
+            @Html.DisplayNameFor(model => model.SortedCvFromLM)
+        </dt>
 
-        <dt>
+        <dd class="col-mod-3">
+            @Html.DisplayFor(model => model.SortedCvFromLM)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
             @Html.DisplayNameFor(model => model.FinalSelectedCandidate)
         </dt>
 
-        <dd>
+        <dd class="col-mod-3">
             @Html.DisplayFor(model => model.FinalSelectedCandidate)
         </dd>
-
-        <dt>
+    </dl>
+    <dl class="row">
+        <dt class="col-mod-2">
             @Html.DisplayNameFor(model => model.WrittentestDate)
         </dt>
 
-        <dd>
+        <dd class="col-mod-3">
             @Html.DisplayFor(model => model.WrittentestDate)
         </dd>
-
+    </dl>
+    
         <dt>
             @Html.DisplayNameFor(model => model.WrittenTestPassedCandidate)
         </dt>
@@ -114,9 +119,41 @@
             @Html.DisplayFor(model => model.VivaCandidate)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -48,7 +48,7 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RequisitionId,CircularDate,NoOfCvFrom,NoOfCvFromAD,NoOfCvFromOnline,NoOfCvFromHardcopy,NoOfCvFromRef,ShortLinedCvSendtoLm,FinalSelectedCandidate,WrittentestDate,WrittenTestPassedCandidate,VivaDate,VivaCandidate")] Circular circular)
+        public ActionResult Create([Bind(Include = "Id,RequisitionId,CircularDate,NoOfCvFromAD,NoOfCvFromOnline,NoOfCvFromHardcopy,NoOfCvFromRef,CvSendtoLM,SortedCvFromLM,FinalSelectedCandidate,WrittentestDate,WrittenTestPassedCandidate,VivaDate,VivaCandidate,CreateDate,ModifiedDate,CreatedBy,ModifiedBy")] Circular circular)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace RSTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RequisitionId,CircularDate,NoOfCvFrom,NoOfCvFromAD,NoOfCvFromOnline,NoOfCvFromHardcopy,NoOfCvFromRef,ShortLinedCvSendtoLm,FinalSelectedCandidate,WrittentestDate,WrittenTestPassedCandidate,VivaDate,VivaCandidate")] Circular circular)
+        public ActionResult Edit([Bind(Include = "Id,RequisitionId,CircularDate,NoOfCvFromAD,NoOfCvFromOnline,NoOfCvFromHardcopy,NoOfCvFromRef,CvSendtoLM,SortedCvFromLM,FinalSelectedCandidate,WrittentestDate,WrittenTestPassedCandidate,VivaDate,VivaCandidate,CreateDate,ModifiedDate,CreatedBy,ModifiedBy")] Circular circular)
         {
             if (ModelState.IsValid)
             {
