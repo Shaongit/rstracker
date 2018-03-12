@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201803111051070_modifycircular.Designer.cs">
       <DependentUpon>201803111051070_modifycircular.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803120711583_modifyCircular2.cs" />
+    <Compile Include="Migrations\201803120711583_modifyCircular2.Designer.cs">
+      <DependentUpon>201803120711583_modifyCircular2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Circular.cs" />
@@ -624,6 +628,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />
+    <Folder Include="obj\Debug\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803080926442_mig01.resx">
@@ -637,6 +642,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803111051070_modifycircular.resx">
       <DependentUpon>201803111051070_modifycircular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803120711583_modifyCircular2.resx">
+      <DependentUpon>201803120711583_modifyCircular2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

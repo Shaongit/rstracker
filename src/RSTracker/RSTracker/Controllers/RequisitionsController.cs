@@ -19,7 +19,7 @@ namespace RSTracker.Controllers
         public ActionResult Index()
         {
             var requisitions = db.Requisitions.Include(r => r.Dept).Include(r => r.Designation).Include(r => r.Division).Include(r => r.RequiredByEmp).Include(r => r.Employee).Include(r => r.Status).Include(r => r.SubUnit);
-            return View(requisitions.Where(p=>p.StatusId == 1 || p.StatusId == 3).OrderBy(p=>p.RequisitionDate).ToList());
+            return View(requisitions.Where(p=>p.StatusId != 3).OrderBy(p=>p.RequisitionDate).ToList());
         }
 
         // GET: Requisitions/Details/5
