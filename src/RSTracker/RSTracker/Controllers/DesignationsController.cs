@@ -10,6 +10,7 @@ using RSTracker.Models;
 
 namespace RSTracker.Controllers
 {
+    [Authorize()]
     public class DesignationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
