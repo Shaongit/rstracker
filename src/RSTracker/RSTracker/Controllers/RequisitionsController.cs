@@ -11,6 +11,7 @@ using RSTracker.Utility;
 
 namespace RSTracker.Controllers
 {
+    [Authorize()]
     public class RequisitionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -10,14 +10,24 @@ using RSTracker.Models;
 
 namespace RSTracker.Controllers
 {
+    [Authorize()]
     public class CircularsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Circulars
-        public ActionResult Index()
+        public ActionResult Index(int? requisitionId)
         {
-            var circular = db.Circular.Include(c => c.Requisition);
+            List<Circular> circular = new List<Circular>();
+
+            if (requisitionId != null)
+            {
+                circular = db.Circular.Include(c => c.Requisition).Where(p=>p.RequisitionId == requisitionId).ToList();
+            }
+            else
+            {
+                circular = db.Circular.Include(c => c.Requisition).ToList();
+            }
             return View(circular.ToList());
         }
 

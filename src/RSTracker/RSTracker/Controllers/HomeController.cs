@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace RSTracker.Controllers
 {
-    //[Authorize()]
+    [Authorize()]
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

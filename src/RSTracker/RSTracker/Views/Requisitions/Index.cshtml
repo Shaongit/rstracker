@@ -89,7 +89,7 @@
                     @Html.DisplayFor(modelItem => item.LastWorkingDay)
                 </td>*@
                 <td>
-                    @Html.ActionLink("View", "Index","Circular",new { id = item.Id }, null)
+                    @Html.ActionLink("View", "Index","Circulars",new { requisitionId = item.Id }, null)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
