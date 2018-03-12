@@ -161,3 +161,43 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('#CircularDate').datetimepicker({
+            format: "DD/MM/YYYY"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker').hide();
+        });//Initialise any date pickers
+
+
+        $('#WrittentestDate').datetimepicker({
+            format: "DD/MM/YYYY"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker').hide();
+        });//Initialise any date pickers
+
+        $('#VivaDate').datetimepicker({
+            format: "DD/MM/YYYY"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker').hide();
+        });//Initialise any date pickers
+
+        $('#CreateDate').datetimepicker({
+            format: "DD/MM/YYYY"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker').hide();
+        });//Initialise any date pickers
+
+        $('#ModifiedDate').datetimepicker({
+            format: "DD/MM/YYYY"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker').hide();
+        });//Initialise any date pickers
+
+
+        $.validator.methods.date = function (value, element) {
+            return this.optional(element) || moment(value, "DD/MM/YYYY", true).isValid();
+        }
+    });
+</script>
