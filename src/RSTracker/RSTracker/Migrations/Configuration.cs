@@ -1,5 +1,6 @@
 namespace RSTracker.Migrations
 {
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,6 +15,12 @@ namespace RSTracker.Migrations
 
         protected override void Seed(RSTracker.Models.ApplicationDbContext context)
         {
+            context.Status.AddOrUpdate(
+                p => p.Id,
+                new Status() {Id = 1,  Name = "Open" },
+                new Status() {Id = 2, Name = "In Progress"},
+                new Status() {Id = 3, Name = "Closed"}
+                );
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

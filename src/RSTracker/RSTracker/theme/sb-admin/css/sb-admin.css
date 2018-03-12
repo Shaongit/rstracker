@@ -476,3 +476,10 @@ footer.sticky-footer {
     width: calc(100% - 55px);
   }
 }
+
+/*For removing spinners in text box type number*/ 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

@@ -215,6 +215,22 @@
     <Compile Include="Migrations\201803080926442_mig01.Designer.cs">
       <DependentUpon>201803080926442_mig01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803110803191_addcircular.cs" />
+    <Compile Include="Migrations\201803110803191_addcircular.Designer.cs">
+      <DependentUpon>201803110803191_addcircular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803110821504_editcircular.cs" />
+    <Compile Include="Migrations\201803110821504_editcircular.Designer.cs">
+      <DependentUpon>201803110821504_editcircular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803111051070_modifycircular.cs" />
+    <Compile Include="Migrations\201803111051070_modifycircular.Designer.cs">
+      <DependentUpon>201803111051070_modifycircular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803120711583_modifyCircular2.cs" />
+    <Compile Include="Migrations\201803120711583_modifyCircular2.Designer.cs">
+      <DependentUpon>201803120711583_modifyCircular2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Circular.cs" />
@@ -491,11 +507,6 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Circulars\Create.cshtml" />
-    <Content Include="Views\Circulars\Delete.cshtml" />
-    <Content Include="Views\Circulars\Details.cshtml" />
-    <Content Include="Views\Circulars\Edit.cshtml" />
-    <Content Include="Views\Circulars\Index.cshtml" />
     <Content Include="Views\Status\Create.cshtml" />
     <Content Include="Views\Status\Delete.cshtml" />
     <Content Include="Views\Status\Details.cshtml" />
@@ -506,11 +517,6 @@
     <Content Include="Views\Requisitions\Details.cshtml" />
     <Content Include="Views\Requisitions\Edit.cshtml" />
     <Content Include="Views\Requisitions\Index.cshtml" />
-    <Content Include="Views\Circulars\Create.cshtml" />
-    <Content Include="Views\Circulars\Delete.cshtml" />
-    <Content Include="Views\Circulars\Details.cshtml" />
-    <Content Include="Views\Circulars\Edit.cshtml" />
-    <Content Include="Views\Circulars\Index.cshtml" />
     <Content Include="Theme\sb-admin\.gitignore" />
     <Content Include="Theme\sb-admin\.jsbeautifyrc" />
     <Content Include="Theme\sb-admin\.travis.yml" />
@@ -607,6 +613,11 @@
     <Content Include="Views\Designations\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAnonymous.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
+    <Content Include="Views\Circulars\Create.cshtml" />
+    <Content Include="Views\Circulars\Delete.cshtml" />
+    <Content Include="Views\Circulars\Details.cshtml" />
+    <Content Include="Views\Circulars\Edit.cshtml" />
+    <Content Include="Views\Circulars\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -617,10 +628,23 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />
+    <Folder Include="obj\Debug\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803080926442_mig01.resx">
       <DependentUpon>201803080926442_mig01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803110803191_addcircular.resx">
+      <DependentUpon>201803110803191_addcircular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803110821504_editcircular.resx">
+      <DependentUpon>201803110821504_editcircular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803111051070_modifycircular.resx">
+      <DependentUpon>201803111051070_modifycircular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803120711583_modifyCircular2.resx">
+      <DependentUpon>201803120711583_modifyCircular2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
