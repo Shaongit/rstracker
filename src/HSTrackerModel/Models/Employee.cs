@@ -1,16 +1,15 @@
-﻿using System;
+﻿using HSTrackerModel.SharedKernel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace RSTracker.Models
+namespace HSTrackerModel.Models
 {
-    public class Employee
+    public class Employee : Entity
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         [Display(Name ="Employee Name")]
         [Required()]
         public string Name { get; set; }

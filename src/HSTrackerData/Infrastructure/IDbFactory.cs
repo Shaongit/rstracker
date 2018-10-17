@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HSTrackerData
+namespace HSTrackerData.Infrastructure
 {
-    public class Class1
+    public interface IDbFactory : IDisposable
     {
+        AppDbContext Init();
     }
 }
