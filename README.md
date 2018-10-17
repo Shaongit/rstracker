@@ -1,6 +1,6 @@
 # Hiring Tracker
 ### Project Description
-Recruitment selection tracker known as Hiring Tracker is an web page application to track HR recruitment information.
+Hiring selection tracker known as Hiring Tracker is an web page application to track HR recruitment information.
 
 ![rstracker](https://user-images.githubusercontent.com/6042355/37240071-39a38470-2470-11e8-9f34-792174912b95.png)
 
