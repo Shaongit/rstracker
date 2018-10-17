@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HSTrackerModel.SharedKernel;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HSTrackerData.Infrastructure
 {
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> where T : Entity
     {
         #region Properties
         private AppDbContext dataContext;
