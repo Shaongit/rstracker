@@ -73,6 +73,7 @@ namespace HSTrackerData
                 .WithMany(w => w.SubUnits)
                 .HasForeignKey(d => d.DeptId)
                 .WillCascadeOnDelete(false);
+
             modelBuilder.Configurations.Add(new CircularConfiguration());
             modelBuilder.Configurations.Add(new DeptConfiguration());
             modelBuilder.Configurations.Add(new DesignationConfiguration());
@@ -85,6 +86,8 @@ namespace HSTrackerData
             base.OnModelCreating(modelBuilder);
 
         }
+
+      
 
     }
 }

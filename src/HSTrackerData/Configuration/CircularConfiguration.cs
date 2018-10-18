@@ -1,6 +1,7 @@
 ﻿using HSTrackerModel.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace HSTrackerData.Configuration
         public CircularConfiguration()
         {
             ToTable("Circular");
+            Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }
