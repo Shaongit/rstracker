@@ -21,32 +21,40 @@ namespace HSTrackerService.Services
         }
         public void CreateCircular(Circular circular)
         {
-            throw new NotImplementedException();
+            _circularRepository.Add(circular);
         }
 
-        public void DeleteCircular(int id)
+        public void DeleteCircular(Circular circular)
         {
-            throw new NotImplementedException();
+            _circularRepository.Delete(circular);
         }
 
         public void EditCircular(Circular circular)
         {
-            throw new NotImplementedException();
+            _circularRepository.Update(circular);
         }
 
         public IEnumerable<Circular> GetAllCircular(int? requisitionId)
         {
-            throw new NotImplementedException();
+            if(requisitionId == null)
+            {
+                return _circularRepository.GetAll();
+            }
+            else
+            {
+                return _circularRepository.GetAll().Where(c => c.RequisitionId == requisitionId);
+            }
         }
 
-        public Circular GetCircular(int id)
+        public Circular GetCircular(int? id)
         {
-            throw new NotImplementedException();
+            var circular = _circularRepository.GetById(id);
+            return circular;
         }
 
         public void SaveCircular()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
     }
 }

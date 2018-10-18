@@ -8,18 +8,25 @@ using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
 using RSTracker.Utility;
+using HSTrackerService.Interface;
+using HSTrackerModel.Models;
 
 namespace RSTracker.Controllers
 {
     [Authorize()]
     public class RequisitionsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
+        private readonly IRequisitionService requisitionService;
+        //private ApplicationDbContext db = new ApplicationDbContext();
+        public RequisitionsController(IRequisitionService requisitionService)
+        {
+            this.requisitionService = requisitionService;
+        }
         // GET: Requisitions
         public ActionResult Index()
         {
-            var requisitions = db.Requisitions.Include(r => r.Dept).Include(r => r.Designation).Include(r => r.Division).Include(r => r.RequiredByEmp).Include(r => r.Employee).Include(r => r.Status).Include(r => r.SubUnit);
+            //var requisitions = db.Requisitions.Include(r => r.Dept).Include(r => r.Designation).Include(r => r.Division).Include(r => r.RequiredByEmp).Include(r => r.Employee).Include(r => r.Status).Include(r => r.SubUnit);
+            var requisitions = requisitionService.GetAllRequisition();
             return View(requisitions.Where(p=>p.StatusId != 3).OrderBy(p=>p.RequisitionDate).ToList());
         }
 
@@ -31,7 +38,7 @@ namespace RSTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Requisition requisition = db.Requisitions.Find(id);
+            Requisition requisition = requisitionService.GetRequisition(id);
             int vacancyTypeId = requisition.VacancyTypeId ?? 0;
             requisition.VacancyTypeName = VacancyType.GetVacancyType(vacancyTypeId);
 
@@ -72,8 +79,8 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Requisitions.Add(requisition);
-                db.SaveChanges();
+                requisitionService.CreateRequisition(requisition);
+                requisitionService.SaveRequisition();
                 return RedirectToAction("Index");
             }
 
@@ -102,7 +109,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Requisition requisition = db.Requisitions.Find(id);
+            Requisition requisition = requisitionService.GetRequisition(id);
             if (requisition == null)
             {
                 return HttpNotFound();
@@ -135,8 +142,8 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(requisition).State = EntityState.Modified;
-                db.SaveChanges();
+                requisitionService.EditRequisition(requisition);
+                requisitionService.SaveRequisition();
                 return RedirectToAction("Index");
             }
             ViewBag.Dept = new SelectList(db.Dept, "Id", "Name", requisition.Dept);
@@ -163,7 +170,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Requisition requisition = db.Requisitions.Find(id);
+            Requisition requisition = requisitionService.GetRequisition(id);
             if (requisition == null)
             {
                 return HttpNotFound();
@@ -176,19 +183,11 @@ namespace RSTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Requisition requisition = db.Requisitions.Find(id);
-            db.Requisitions.Remove(requisition);
-            db.SaveChanges();
+            Requisition requisition = requisitionService.GetRequisition(id);
+            requisitionService.DeleteRequisition(requisition);
+            requisitionService.SaveRequisition();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
