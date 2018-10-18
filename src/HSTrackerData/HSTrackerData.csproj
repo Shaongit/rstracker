@@ -66,10 +66,24 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CircularRepository.cs" />
+    <Compile Include="Repositories\DeptRepository.cs" />
+    <Compile Include="Repositories\DesignationRepository.cs" />
+    <Compile Include="Repositories\DivisionRepository.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\Interface\ICircularRepository.cs" />
+    <Compile Include="Repositories\Interface\IDeptRepository.cs" />
+    <Compile Include="Repositories\Interface\IDesignationRepository.cs" />
+    <Compile Include="Repositories\Interface\IDivisionRepository.cs" />
+    <Compile Include="Repositories\Interface\IEmployeeRepository.cs" />
+    <Compile Include="Repositories\Interface\IRequisitionRepository.cs" />
+    <Compile Include="Repositories\Interface\IStatusRepository.cs" />
+    <Compile Include="Repositories\Interface\ISubUnitRepository.cs" />
+    <Compile Include="Repositories\RequisitionRepository.cs" />
+    <Compile Include="Repositories\StatusRepository.cs" />
+    <Compile Include="Repositories\SubUnitRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
