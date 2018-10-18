@@ -1,4 +1,5 @@
-﻿using HSTrackerModel.Models;
+﻿using HSTrackerData.Configuration;
+using HSTrackerModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -72,6 +73,14 @@ namespace HSTrackerData
                 .WithMany(w => w.SubUnits)
                 .HasForeignKey(d => d.DeptId)
                 .WillCascadeOnDelete(false);
+            modelBuilder.Configurations.Add(new CircularConfiguration());
+            modelBuilder.Configurations.Add(new DeptConfiguration());
+            modelBuilder.Configurations.Add(new DesignationConfiguration());
+            modelBuilder.Configurations.Add(new DivisionConfiguration());
+            modelBuilder.Configurations.Add(new EmployeeConfiguration());
+            modelBuilder.Configurations.Add(new RequisitionConfiguration());
+            modelBuilder.Configurations.Add(new StatusConfiguration());
+            modelBuilder.Configurations.Add(new SubUnitConfiguration());
 
             base.OnModelCreating(modelBuilder);
 

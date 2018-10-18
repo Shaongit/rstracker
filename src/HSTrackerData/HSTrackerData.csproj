@@ -50,6 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="Configuration\CircularConfiguration.cs" />
+    <Compile Include="Configuration\DeptConfiguration.cs" />
+    <Compile Include="Configuration\DesignationConfiguration.cs" />
+    <Compile Include="Configuration\DivisionConfiguration.cs" />
+    <Compile Include="Configuration\EmployeeConfiguration.cs" />
+    <Compile Include="Configuration\RequisitionConfiguration.cs" />
+    <Compile Include="Configuration\StatusConfiguration.cs" />
+    <Compile Include="Configuration\SubUnitConfiguration.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
@@ -60,7 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Configuration\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>

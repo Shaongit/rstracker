@@ -11,7 +11,6 @@ namespace HSTrackerModel.Models
     public class SubUnit : Entity
     {
         [Display(Name ="Sub Unit")]
-        [Required()]
         public string Name { get; set; }
         public int DeptId { get; set; }
         [ForeignKey("DeptId")]

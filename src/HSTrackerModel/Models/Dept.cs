@@ -11,8 +11,6 @@ namespace HSTrackerModel.Models
     public class Dept : Entity
     {
         [Display(Name ="Department")]
-        [Required()]
-
         public string Name { get; set; }
         public int DivisionId { get; set; }
 

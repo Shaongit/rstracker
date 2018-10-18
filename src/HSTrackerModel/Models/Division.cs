@@ -19,7 +19,6 @@ namespace HSTrackerModel.Models
         }
 
         [Display(Name ="Division Name")]
-        [Required()]
         public string Name { get; set; }
 
         public virtual List<Employee> Employees { get; set; }

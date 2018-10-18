@@ -18,7 +18,6 @@ namespace HSTrackerModel.Models
             ModifiedBy = null;
         }
 
-        [Required()]
         [Display(Name = "Ref. No")]
         public string RefNo { get; set; }
 

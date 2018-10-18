@@ -11,7 +11,6 @@ namespace HSTrackerModel.Models
     public class Status : Entity
     {
         [Display (Name ="Status")]
-        [Required()]
         public string Name { get; set; }
     }
 }

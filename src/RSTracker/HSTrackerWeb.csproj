@@ -656,6 +656,20 @@
       <DependentUpon>201803120711583_modifyCircular2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HSTrackerData\HSTrackerData.csproj">
+      <Project>{8d70a0cb-f6a5-4a7f-8f28-7c3097ca2697}</Project>
+      <Name>HSTrackerData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSTrackerModel\HSTrackerModel.csproj">
+      <Project>{a5b729db-9a38-4769-9859-7e0b6964afbe}</Project>
+      <Name>HSTrackerModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSTrackerService\HSTrackerService.csproj">
+      <Project>{49eeb116-e3aa-4ef7-9595-c7cc2f81e219}</Project>
+      <Name>HSTrackerService</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
