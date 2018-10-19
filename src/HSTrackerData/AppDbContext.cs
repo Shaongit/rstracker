@@ -1,5 +1,7 @@
 ﻿using HSTrackerData.Configuration;
 using HSTrackerModel.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using RSTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,9 +11,13 @@ using System.Threading.Tasks;
 
 namespace HSTrackerData
 {
-   public class AppDbContext : DbContext
+   public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext() : base("DefaultConnection") { }
+        public static AppDbContext Create()
+        {
+            return new AppDbContext();
+        }
 
         public DbSet<Dept> Dept { get; set; }
         public DbSet<Division> Division { get; set; }
