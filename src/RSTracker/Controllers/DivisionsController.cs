@@ -16,7 +16,10 @@ namespace RSTracker.Controllers
     public class DivisionsController : Controller
     {
         private readonly IDivisionService divisionService;
-
+        public DivisionsController(IDivisionService divisionService)
+        {
+            this.divisionService = divisionService;
+        }
         // GET: Divisions
         public ActionResult Index()
         {

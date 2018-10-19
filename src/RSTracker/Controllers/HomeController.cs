@@ -12,6 +12,10 @@ namespace RSTracker.Controllers
     public class HomeController : Controller
     {
         private readonly IRequisitionService requisitionService;
+        public HomeController(IRequisitionService requisitionService)
+        {
+            this.requisitionService = requisitionService;
+        }
         public ActionResult Index()
         {
             var requisitions = requisitionService.GetAllRequisition();

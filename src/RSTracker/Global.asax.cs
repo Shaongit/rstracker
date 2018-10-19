@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RSTracker;
+using RSTracker.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +10,7 @@ using System.Web.Routing;
 
 namespace RSTracker
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -16,6 +18,7 @@ namespace RSTracker
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Bootstrapper.Run();
         }
     }
 }

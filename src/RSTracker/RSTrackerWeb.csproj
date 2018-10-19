@@ -14,7 +14,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RSTracker</RootNamespace>
+    <RootNamespace>HSTracker</RootNamespace>
     <AssemblyName>RSTracker</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
@@ -236,10 +236,6 @@
     <Compile Include="Utility\VacancyType.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\RSTrackerDB.mdf" />
-    <Content Include="App_Data\RSTrackerDB_log.ldf">
-      <DependentUpon>RSTrackerDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -615,21 +611,22 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
     <Folder Include="obj\Debug\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HSTrackerData\HSTrackerData.csproj">
+    <ProjectReference Include="..\HSTrackerData\RSTrackerData.csproj">
       <Project>{8d70a0cb-f6a5-4a7f-8f28-7c3097ca2697}</Project>
-      <Name>HSTrackerData</Name>
+      <Name>RSTrackerData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HSTrackerModel\HSTrackerModel.csproj">
+    <ProjectReference Include="..\HSTrackerModel\RSTrackerModel.csproj">
       <Project>{a5b729db-9a38-4769-9859-7e0b6964afbe}</Project>
-      <Name>HSTrackerModel</Name>
+      <Name>RSTrackerModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HSTrackerService\HSTrackerService.csproj">
+    <ProjectReference Include="..\HSTrackerService\RSTrackerService.csproj">
       <Project>{49eeb116-e3aa-4ef7-9595-c7cc2f81e219}</Project>
-      <Name>HSTrackerService</Name>
+      <Name>RSTrackerService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
