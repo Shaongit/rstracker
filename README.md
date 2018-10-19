@@ -20,7 +20,7 @@ Recruitment selection tracker known as RStracker is an web page application to t
 
 ### Contributing
 
-The Hiring Tracker is an open source Project. It is open to everyone. 
+The RSTracker is an open source Project. It is open to everyone. 
 
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
