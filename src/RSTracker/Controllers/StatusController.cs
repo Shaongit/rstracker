@@ -7,18 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
+using HSTrackerService.Interface;
+using HSTrackerModel.Models;
 
 namespace RSTracker.Controllers
 {
     [Authorize()]
     public class StatusController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IStatusService statusService;
+        public StatusController(IStatusService statusService)
+        {
+            this.statusService = statusService;
+        }
 
         // GET: Status
         public ActionResult Index()
         {
-            return View(db.Status.ToList());
+            return View(statusService.GetAllStatus().ToList());
         }
 
         // GET: Status/Details/5
@@ -28,7 +34,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Status status = db.Status.Find(id);
+            Status status = statusService.GetStatus(id);
             if (status == null)
             {
                 return HttpNotFound();
@@ -51,8 +57,8 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Status.Add(status);
-                db.SaveChanges();
+                statusService.CreateStatus(status);
+                statusService.SaveStatus();
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +72,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Status status = db.Status.Find(id);
+            Status status = statusService.GetStatus(id);
             if (status == null)
             {
                 return HttpNotFound();
@@ -83,8 +89,8 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(status).State = EntityState.Modified;
-                db.SaveChanges();
+                statusService.EditStatus(status);
+                statusService.SaveStatus();
                 return RedirectToAction("Index");
             }
             return View(status);
@@ -97,7 +103,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Status status = db.Status.Find(id);
+            Status status = statusService.GetStatus(id);
             if (status == null)
             {
                 return HttpNotFound();
@@ -110,19 +116,11 @@ namespace RSTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Status status = db.Status.Find(id);
-            db.Status.Remove(status);
-            db.SaveChanges();
+            Status status = statusService.GetStatus(id);
+            statusService.DeleteStatus(status);
+            statusService.SaveStatus();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

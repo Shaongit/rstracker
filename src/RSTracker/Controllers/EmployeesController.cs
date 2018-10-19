@@ -7,18 +7,38 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
+using HSTrackerService.Interface;
+using HSTrackerModel.Models;
 
 namespace RSTracker.Controllers
 {
     [Authorize()]
     public class EmployeesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IEmployeeService employeeService;
+        private readonly ISubUnitService subUnitService;
+        private readonly IDivisionService divisionService;
+        private readonly IDesignationService designationService;
+        private readonly IDeptService deptService;
+        public EmployeesController(
+            IEmployeeService employeeService,
+            ISubUnitService subUnitService,
+            IDivisionService divisionService,
+            IDesignationService designationService,
+            IDeptService deptService
+            )
+        {
+            this.employeeService = employeeService;
+            this.subUnitService = subUnitService;
+            this.divisionService = divisionService;
+            this.designationService = designationService;
+            this.deptService = deptService;
+        }
 
         // GET: Employees
         public ActionResult Index()
         {
-            var employee = db.Employee.Include(e => e.Dept).Include(e => e.Designation).Include(e => e.Division).Include(e => e.SubUnit);
+            var employee = employeeService.GetAllEmployee();
             return View(employee.ToList());
         }
 
@@ -29,7 +49,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = employeeService.GetEmployee(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -40,10 +60,10 @@ namespace RSTracker.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name");
-            ViewBag.DesignationId = new SelectList(db.Designation, "Id", "Name");
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
-            ViewBag.SubUnitId = new SelectList(db.SubUnit, "Id", "Name");
+            ViewBag.DeptId = new SelectList(deptService.GetAllDept(), "Id", "Name");
+            ViewBag.DesignationId = new SelectList(designationService.GetAllDesignation(), "Id", "Name");
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name");
+            ViewBag.SubUnitId = new SelectList(subUnitService.GetAllSubUnit(), "Id", "Name");
             return View();
         }
 
@@ -56,15 +76,15 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Employee.Add(employee);
-                db.SaveChanges();
+                employeeService.CreateEmployee(employee);
+                employeeService.SaveEmployee();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", employee.DeptId);
-            ViewBag.DesignationId = new SelectList(db.Designation, "Id", "Name", employee.DesignationId);
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", employee.DivisionId);
-            ViewBag.SubUnitId = new SelectList(db.SubUnit, "Id", "Name", employee.SubUnitId);
+            ViewBag.DeptId = new SelectList(deptService.GetAllDept(), "Id", "Name");
+            ViewBag.DesignationId = new SelectList(designationService.GetAllDesignation(), "Id", "Name");
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name");
+            ViewBag.SubUnitId = new SelectList(subUnitService.GetAllSubUnit(), "Id", "Name");
             return View(employee);
         }
 
@@ -75,15 +95,15 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = employeeService.GetEmployee(id);
             if (employee == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", employee.DeptId);
-            ViewBag.DesignationId = new SelectList(db.Designation, "Id", "Name", employee.DesignationId);
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", employee.DivisionId);
-            ViewBag.SubUnitId = new SelectList(db.SubUnit, "Id", "Name", employee.SubUnitId);
+            ViewBag.DeptId = new SelectList(deptService.GetAllDept(), "Id", "Name");
+            ViewBag.DesignationId = new SelectList(designationService.GetAllDesignation(), "Id", "Name");
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name");
+            ViewBag.SubUnitId = new SelectList(subUnitService.GetAllSubUnit(), "Id", "Name");
             return View(employee);
         }
 
@@ -96,14 +116,14 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
+                employeeService.EditEmployee(employee);
+                employeeService.SaveEmployee();
                 return RedirectToAction("Index");
             }
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", employee.DeptId);
-            ViewBag.DesignationId = new SelectList(db.Designation, "Id", "Name", employee.DesignationId);
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", employee.DivisionId);
-            ViewBag.SubUnitId = new SelectList(db.SubUnit, "Id", "Name", employee.SubUnitId);
+            ViewBag.DeptId = new SelectList(deptService.GetAllDept(), "Id", "Name", employee.DeptId);
+            ViewBag.DesignationId = new SelectList(designationService.GetAllDesignation(), "Id", "Name", employee.DesignationId);
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name", employee.DivisionId);
+            ViewBag.SubUnitId = new SelectList(subUnitService.GetAllSubUnit(), "Id", "Name", employee.SubUnitId);
             return View(employee);
         }
 
@@ -114,7 +134,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = employeeService.GetEmployee(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -127,19 +147,11 @@ namespace RSTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employee.Find(id);
-            db.Employee.Remove(employee);
-            db.SaveChanges();
+            Employee employee = employeeService.GetEmployee(id);
+            employeeService.DeleteEmployee(employee);
+            employeeService.SaveEmployee();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

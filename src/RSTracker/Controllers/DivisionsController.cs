@@ -7,18 +7,20 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
+using HSTrackerService.Interface;
+using HSTrackerModel.Models;
 
 namespace RSTracker.Controllers
 {
     [Authorize()]
     public class DivisionsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IDivisionService divisionService;
 
         // GET: Divisions
         public ActionResult Index()
         {
-            return View(db.Division.ToList());
+            return View(divisionService.GetAllDivision());
         }
 
         // GET: Divisions/Details/5
@@ -28,7 +30,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Division division = db.Division.Find(id);
+            Division division = divisionService.GetDivision(id);
             if (division == null)
             {
                 return HttpNotFound();
@@ -51,8 +53,8 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Division.Add(division);
-                db.SaveChanges();
+                divisionService.CreateDivision(division);
+                divisionService.SaveDivision();
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +68,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Division division = db.Division.Find(id);
+            Division division = divisionService.GetDivision(id);
             if (division == null)
             {
                 return HttpNotFound();
@@ -83,8 +85,8 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(division).State = EntityState.Modified;
-                db.SaveChanges();
+                divisionService.EditDivision(division);
+                divisionService.SaveDivision();
                 return RedirectToAction("Index");
             }
             return View(division);
@@ -97,7 +99,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Division division = db.Division.Find(id);
+            Division division = divisionService.GetDivision(id);
             if (division == null)
             {
                 return HttpNotFound();
@@ -110,19 +112,11 @@ namespace RSTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Division division = db.Division.Find(id);
-            db.Division.Remove(division);
-            db.SaveChanges();
+            Division division = divisionService.GetDivision(id);
+            divisionService.DeleteDivision(division);
+            divisionService.SaveDivision();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

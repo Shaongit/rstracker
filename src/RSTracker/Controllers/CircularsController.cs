@@ -7,28 +7,28 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
+using HSTrackerModel.Models;
+using HSTrackerService.Interface;
 
 namespace RSTracker.Controllers
 {
     [Authorize()]
     public class CircularsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ICircularService circularService;
+        private readonly IRequisitionService requisitionService;
+        public CircularsController(IRequisitionService requisitionService, ICircularService circularService)
+        {
+            this.circularService = circularService;
+            this.requisitionService = requisitionService;
+        }
 
         // GET: Circulars
         public ActionResult Index(int? requisitionId)
         {
-            List<Circular> circular = new List<Circular>();
+            var circular = circularService.GetAllCircular(requisitionId);
 
-            if (requisitionId != null)
-            {
-                circular = db.Circular.Include(c => c.Requisition).Where(p=>p.RequisitionId == requisitionId).ToList();
-            }
-            else
-            {
-                circular = db.Circular.Include(c => c.Requisition).ToList();
-            }
-            return View(circular.ToList());
+            return View(circular);
         }
 
         // GET: Circulars/Details/5
@@ -38,7 +38,8 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Circular circular = db.Circular.Find(id);
+            
+            var circular = circularService.GetCircular(id);
             if (circular == null)
             {
                 return HttpNotFound();
@@ -49,7 +50,7 @@ namespace RSTracker.Controllers
         // GET: Circulars/Create
         public ActionResult Create()
         {
-            ViewBag.RequisitionId = new SelectList(db.Requisitions, "Id", "RefNo");
+            ViewBag.RequisitionId = new SelectList(requisitionService.GetAllRequisition(), "Id", "RefNo");
             return View();
         }
 
@@ -62,12 +63,12 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Circular.Add(circular);
-                db.SaveChanges();
+                circularService.CreateCircular(circular);
+                circularService.SaveCircular();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RequisitionId = new SelectList(db.Requisitions, "Id", "RefNo", circular.RequisitionId);
+            ViewBag.RequisitionId = new SelectList(requisitionService.GetAllRequisition(), "Id", "RefNo", circular.RequisitionId);
             return View(circular);
         }
 
@@ -78,12 +79,12 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Circular circular = db.Circular.Find(id);
+            Circular circular = circularService.GetCircular(id);
             if (circular == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RequisitionId = new SelectList(db.Requisitions, "Id", "RefNo", circular.RequisitionId);
+            ViewBag.RequisitionId = new SelectList(requisitionService.GetAllRequisition(), "Id", "RefNo", circular.RequisitionId);
             return View(circular);
         }
 
@@ -96,11 +97,11 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(circular).State = EntityState.Modified;
-                db.SaveChanges();
+                circularService.EditCircular(circular);
+                circularService.SaveCircular();
                 return RedirectToAction("Index");
             }
-            ViewBag.RequisitionId = new SelectList(db.Requisitions, "Id", "RefNo", circular.RequisitionId);
+            ViewBag.RequisitionId = new SelectList(requisitionService.GetAllRequisition(), "Id", "RefNo", circular.RequisitionId);
             return View(circular);
         }
 
@@ -111,7 +112,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Circular circular = db.Circular.Find(id);
+            Circular circular = circularService.GetCircular(id);
             if (circular == null)
             {
                 return HttpNotFound();
@@ -124,19 +125,11 @@ namespace RSTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Circular circular = db.Circular.Find(id);
-            db.Circular.Remove(circular);
-            db.SaveChanges();
+            Circular circular = circularService.GetCircular(id);
+            circularService.DeleteCircular(circular);
+            circularService.SaveCircular();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
