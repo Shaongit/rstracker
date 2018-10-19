@@ -130,9 +130,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HSTrackerModel\HSTrackerModel.csproj">
+    <ProjectReference Include="..\HSTrackerModel\RSTrackerModel.csproj">
       <Project>{a5b729db-9a38-4769-9859-7e0b6964afbe}</Project>
-      <Name>HSTrackerModel</Name>
+      <Name>RSTrackerModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

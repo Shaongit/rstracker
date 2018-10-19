@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSTrackerData", "HSTrackerData\HSTrackerData.csproj", "{8D70A0CB-F6A5-4A7F-8F28-7C3097CA2697}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSTrackerData", "HSTrackerData\RSTrackerData.csproj", "{8D70A0CB-F6A5-4A7F-8F28-7C3097CA2697}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSTrackerService", "HSTrackerService\HSTrackerService.csproj", "{49EEB116-E3AA-4EF7-9595-C7CC2F81E219}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSTrackerService", "HSTrackerService\RSTrackerService.csproj", "{49EEB116-E3AA-4EF7-9595-C7CC2F81E219}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSTrackerModel", "HSTrackerModel\HSTrackerModel.csproj", "{A5B729DB-9A38-4769-9859-7E0B6964AFBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSTrackerModel", "HSTrackerModel\RSTrackerModel.csproj", "{A5B729DB-9A38-4769-9859-7E0B6964AFBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSTrackerWeb", "RSTracker\HSTrackerWeb.csproj", "{B50B0CE5-E14F-4896-848C-CAB1CFD08EB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSTrackerWeb", "RSTracker\RSTrackerWeb.csproj", "{B50B0CE5-E14F-4896-848C-CAB1CFD08EB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -59,13 +59,13 @@
     <Compile Include="Services\SubUnitService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HSTrackerData\HSTrackerData.csproj">
+    <ProjectReference Include="..\HSTrackerData\RSTrackerData.csproj">
       <Project>{8D70A0CB-F6A5-4A7F-8F28-7C3097CA2697}</Project>
-      <Name>HSTrackerData</Name>
+      <Name>RSTrackerData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HSTrackerModel\HSTrackerModel.csproj">
+    <ProjectReference Include="..\HSTrackerModel\RSTrackerModel.csproj">
       <Project>{A5B729DB-9A38-4769-9859-7E0B6964AFBE}</Project>
-      <Name>HSTrackerModel</Name>
+      <Name>RSTrackerModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
