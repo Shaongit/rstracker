@@ -1,0 +1,29 @@
+﻿@model HSTrackerModel.Models.SubUnit
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sub-Unit details</li>
+</ol>
+<div>
+    <dl class="row">
+        <dt class="col-md-2">
+            @Html.DisplayNameFor(model => model.Dept.Name)
+        </dt>
+
+        <dd class="col-md-3">
+            @Html.DisplayFor(model => model.Dept.Name)
+        </dd>
+
+        <dt class="col-md-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd class="col-md-3">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" }) |
+    @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-outline-primary" })
+</p>
