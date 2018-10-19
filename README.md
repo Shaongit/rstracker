@@ -1,4 +1,4 @@
-# Hiring Tracker
+# RSTracker
 ### Project Description
 Recruitment selection tracker known as RStracker is an web page application to track HR recruitment information.
 
