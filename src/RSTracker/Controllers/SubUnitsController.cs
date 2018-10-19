@@ -7,18 +7,26 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
+using HSTrackerService.Interface;
+using HSTrackerModel.Models;
 
 namespace RSTracker.Controllers
 {
     [Authorize()]
     public class SubUnitsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IDeptService deptService;
+        private readonly ISubUnitService subUnitService;
+        public SubUnitsController(ISubUnitService subUnitService, IDeptService deptService)
+        {
+            this.deptService = deptService;
+            this.subUnitService = subUnitService;
+        }
 
         // GET: SubUnits
         public ActionResult Index()
         {
-            var subUnit = db.SubUnit.Include(s => s.Dept);
+            var subUnit = subUnitService.GetAllSubUnit();
             return View(subUnit.ToList());
         }
 
@@ -29,7 +37,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubUnit subUnit = db.SubUnit.Find(id);
+            SubUnit subUnit = subUnitService.GetSubUnit(id);
             if (subUnit == null)
             {
                 return HttpNotFound();
@@ -40,7 +48,7 @@ namespace RSTracker.Controllers
         // GET: SubUnits/Create
         public ActionResult Create()
         {
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name");
+            ViewBag.DeptId = new SelectList(deptService.GetAllDept(), "Id", "Name");
             return View();
         }
 
@@ -53,12 +61,12 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SubUnit.Add(subUnit);
-                db.SaveChanges();
+                subUnitService.CreateSubUnit(subUnit);
+                subUnitService.SaveSubUnit();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", subUnit.DeptId);
+            ViewBag.DeptId = new SelectList(deptService.GetAllDept(), "Id", "Name", subUnit.DeptId);
             return View(subUnit);
         }
 
@@ -69,12 +77,12 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubUnit subUnit = db.SubUnit.Find(id);
+            SubUnit subUnit = subUnitService.GetSubUnit(id);
             if (subUnit == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", subUnit.DeptId);
+            ViewBag.DeptId = new SelectList(deptService.GetAllDept(), "Id", "Name", subUnit.DeptId);
             return View(subUnit);
         }
 
@@ -87,11 +95,11 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(subUnit).State = EntityState.Modified;
-                db.SaveChanges();
+                subUnitService.EditSubUnit(subUnit);
+                subUnitService.SaveSubUnit();
                 return RedirectToAction("Index");
             }
-            ViewBag.DeptId = new SelectList(db.Dept, "Id", "Name", subUnit.DeptId);
+            ViewBag.DeptId = new SelectList(deptService.GetAllDept(), "Id", "Name", subUnit.DeptId);
             return View(subUnit);
         }
 
@@ -102,7 +110,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubUnit subUnit = db.SubUnit.Find(id);
+            SubUnit subUnit = subUnitService.GetSubUnit(id);
             if (subUnit == null)
             {
                 return HttpNotFound();
@@ -115,19 +123,11 @@ namespace RSTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SubUnit subUnit = db.SubUnit.Find(id);
-            db.SubUnit.Remove(subUnit);
-            db.SaveChanges();
+            SubUnit subUnit = subUnitService.GetSubUnit(id);
+            subUnitService.DeleteSubUnit(subUnit);
+            subUnitService.SaveSubUnit();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

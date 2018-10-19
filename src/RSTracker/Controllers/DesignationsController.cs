@@ -8,18 +8,25 @@ using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
 using HSTrackerModel.Models;
+using HSTrackerService.Interface;
 
 namespace RSTracker.Controllers
 {
     [Authorize()]
     public class DesignationsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IDesignationService designationService;
+        private readonly IDivisionService divisionService;
+        public DesignationsController(IDesignationService designationService, IDivisionService divisionService)
+        {
+            this.designationService = designationService;
+            this.divisionService = divisionService;
+        }
 
         // GET: Designations
         public ActionResult Index()
         {
-            var designation = db.Designation.Include(d => d.Division);
+            var designation = designationService.GetAllDesignation();
             return View(designation.ToList());
         }
 
@@ -30,7 +37,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Designation designation = db.Designation.Find(id);
+            Designation designation = designationService.GetDesignation(id);
             if (designation == null)
             {
                 return HttpNotFound();
@@ -41,7 +48,7 @@ namespace RSTracker.Controllers
         // GET: Designations/Create
         public ActionResult Create()
         {
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name");
             return View();
         }
 
@@ -54,12 +61,12 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Designation.Add(designation);
-                db.SaveChanges();
+                designationService.CreateDesignation(designation);
+                designationService.SaveDesignation();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", designation.DivisionId);
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name", designation.DivisionId);
             return View(designation);
         }
 
@@ -70,12 +77,12 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Designation designation = db.Designation.Find(id);
+            Designation designation = designationService.GetDesignation(id);
             if (designation == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", designation.DivisionId);
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name", designation.DivisionId);
             return View(designation);
         }
 
@@ -88,11 +95,11 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(designation).State = EntityState.Modified;
-                db.SaveChanges();
+                designationService.EditDesignation(designation);
+                designationService.SaveDesignation();
                 return RedirectToAction("Index");
             }
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", designation.DivisionId);
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name", designation.DivisionId);
             return View(designation);
         }
 
@@ -103,7 +110,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Designation designation = db.Designation.Find(id);
+            Designation designation = designationService.GetDesignation(id);
             if (designation == null)
             {
                 return HttpNotFound();
@@ -116,19 +123,11 @@ namespace RSTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Designation designation = db.Designation.Find(id);
-            db.Designation.Remove(designation);
-            db.SaveChanges();
+            Designation designation = designationService.GetDesignation(id);
+            designationService.DeleteDesignation(designation);
+            designationService.SaveDesignation();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

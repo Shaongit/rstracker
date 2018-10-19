@@ -8,18 +8,25 @@ using System.Web;
 using System.Web.Mvc;
 using RSTracker.Models;
 using HSTrackerModel.Models;
+using HSTrackerService.Interface;
 
 namespace RSTracker.Controllers
 {
     [Authorize()]
     public class DeptsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IDeptService deptService;
+        private readonly IDivisionService divisionService;
 
+        public DeptsController(IDeptService deptService, IDivisionService divisionService)
+        {
+            this.deptService = deptService;
+            this.divisionService = divisionService;
+        }
         // GET: Depts
         public ActionResult Index()
         {
-            var dept = db.Dept.Include(d => d.Division);
+            var dept = deptService.GetAllDept();
             return View(dept.ToList());
         }
 
@@ -30,7 +37,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dept dept = db.Dept.Find(id);
+            Dept dept = deptService.GetDept(id);
             if (dept == null)
             {
                 return HttpNotFound();
@@ -41,7 +48,7 @@ namespace RSTracker.Controllers
         // GET: Depts/Create
         public ActionResult Create()
         {
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name");
             return View();
         }
 
@@ -54,12 +61,12 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Dept.Add(dept);
-                db.SaveChanges();
+                deptService.CreateDept(dept);
+                deptService.SaveDept();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name", dept.DivisionId);
             return View(dept);
         }
 
@@ -70,12 +77,12 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dept dept = db.Dept.Find(id);
+            Dept dept = deptService.GetDept(id);
             if (dept == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name", dept.DivisionId);
             return View(dept);
         }
 
@@ -88,11 +95,11 @@ namespace RSTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dept).State = EntityState.Modified;
-                db.SaveChanges();
+                deptService.EditDept(dept);
+                deptService.SaveDept();
                 return RedirectToAction("Index");
             }
-            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", dept.DivisionId);
+            ViewBag.DivisionId = new SelectList(divisionService.GetAllDivision(), "Id", "Name", dept.DivisionId);
             return View(dept);
         }
 
@@ -103,7 +110,7 @@ namespace RSTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dept dept = db.Dept.Find(id);
+            Dept dept = deptService.GetDept(id);
             if (dept == null)
             {
                 return HttpNotFound();
@@ -116,9 +123,9 @@ namespace RSTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Dept dept = db.Dept.Find(id);
-            db.Dept.Remove(dept);
-            db.SaveChanges();
+            Dept dept = deptService.GetDept(id);
+            deptService.DeleteDept(dept);
+            deptService.SaveDept();
             return RedirectToAction("Index");
         }
 

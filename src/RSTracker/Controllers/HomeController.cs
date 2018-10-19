@@ -1,4 +1,5 @@
-﻿using RSTracker.Models;
+﻿using HSTrackerService.Interface;
+using RSTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace RSTracker.Controllers
     [Authorize()]
     public class HomeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IRequisitionService requisitionService;
         public ActionResult Index()
         {
-            var requisitions = db.Requisitions.ToList();
+            var requisitions = requisitionService.GetAllRequisition();
             //.Include(r => r.Dep).Include(r => r.Designation).Include(r => r.Div).Include(r => r.Emp).Include(r => r.Employee).Include(r => r.Stat).Include(r => r.SubUni);
             return View(requisitions.Where(p => p.StatusId !=3).OrderBy(p => p.RequisitionDate).ToList());
         }

@@ -16,9 +16,11 @@ namespace RSTracker.Controllers
     public class CircularsController : Controller
     {
         private readonly ICircularService circularService;
-        public CircularsController(ICircularService circularService)
+        private readonly IRequisitionService requisitionService;
+        public CircularsController(IRequisitionService requisitionService, ICircularService circularService)
         {
             this.circularService = circularService;
+            this.requisitionService = requisitionService;
         }
 
         // GET: Circulars
@@ -48,7 +50,7 @@ namespace RSTracker.Controllers
         // GET: Circulars/Create
         public ActionResult Create()
         {
-            ViewBag.RequisitionId = new SelectList(db.Requisitions, "Id", "RefNo");
+            ViewBag.RequisitionId = new SelectList(requisitionService.GetAllRequisition(), "Id", "RefNo");
             return View();
         }
 
@@ -66,7 +68,7 @@ namespace RSTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RequisitionId = new SelectList(db.Requisitions, "Id", "RefNo", circular.RequisitionId);
+            ViewBag.RequisitionId = new SelectList(requisitionService.GetAllRequisition(), "Id", "RefNo", circular.RequisitionId);
             return View(circular);
         }
 
@@ -82,7 +84,7 @@ namespace RSTracker.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RequisitionId = new SelectList(db.Requisitions, "Id", "RefNo", circular.RequisitionId);
+            ViewBag.RequisitionId = new SelectList(requisitionService.GetAllRequisition(), "Id", "RefNo", circular.RequisitionId);
             return View(circular);
         }
 
@@ -99,7 +101,7 @@ namespace RSTracker.Controllers
                 circularService.SaveCircular();
                 return RedirectToAction("Index");
             }
-            ViewBag.RequisitionId = new SelectList(db.Requisitions, "Id", "RefNo", circular.RequisitionId);
+            ViewBag.RequisitionId = new SelectList(requisitionService.GetAllRequisition(), "Id", "RefNo", circular.RequisitionId);
             return View(circular);
         }
 
